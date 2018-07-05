@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSM.Infrastructure", "OSM.Infrastructure\OSM.Infrastructure.csproj", "{0DA6D990-5502-4D44-929D-138DF497563D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSM", "OSM\OSM.csproj", "{23C662D7-B677-4BCD-A6F8-692DE3E30205}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DA6D990-5502-4D44-929D-138DF497563D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA6D990-5502-4D44-929D-138DF497563D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA6D990-5502-4D44-929D-138DF497563D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA6D990-5502-4D44-929D-138DF497563D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C662D7-B677-4BCD-A6F8-692DE3E30205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C662D7-B677-4BCD-A6F8-692DE3E30205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C662D7-B677-4BCD-A6F8-692DE3E30205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C662D7-B677-4BCD-A6F8-692DE3E30205}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01C6CCBA-385B-4A99-AA45-36BA88EE2D8B}
+	EndGlobalSection
+EndGlobal

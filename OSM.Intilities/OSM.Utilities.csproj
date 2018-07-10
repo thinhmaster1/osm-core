@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Enums\" />
-    <Folder Include="SharedKernel\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

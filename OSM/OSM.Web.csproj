@@ -18,4 +18,12 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OSM.Application\OSM.Application.csproj" />
+    <ProjectReference Include="..\OSM.Data.EF\OSM.Data.EF.csproj" />
+    <ProjectReference Include="..\OSM.Data\OSM.Data.csproj" />
+    <ProjectReference Include="..\OSM.Infrastructure\OSM.Infrastructure.csproj" />
+    <ProjectReference Include="..\OSM.Intilities\OSM.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>

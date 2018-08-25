@@ -8,13 +8,11 @@ using System.Text;
 
 namespace OSM.Data.EF.Configurations
 {
-    public class BlogTagConfiguration : DbEntityConfiguration<BlogTag>
+    public class AdvertistmentPageConfiguration : DbEntityConfiguration<AdvertistmentPage>
     {
-        public override void Configure(EntityTypeBuilder<BlogTag> entity)
+        public override void Configure(EntityTypeBuilder<AdvertistmentPage> entity)
         {
-            entity.Property(c => c.TagId).HasMaxLength(50).IsRequired()
-            .HasColumnType("varchar(50)");
-            // etc.
+            entity.Property(c => c.Id).HasMaxLength(20).IsRequired();
         }
     }
 }

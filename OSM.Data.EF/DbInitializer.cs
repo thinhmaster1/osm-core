@@ -53,6 +53,9 @@ namespace OSM.Data.EF
                     FullName = "Administrator",
                     Email = "admin@gmail.com",
                     Balance = 0,
+                    DateCreated = DateTime.Now,
+                    DateModified = DateTime.Now,
+                    Status = Status.Active
                 }, "123654$");
                 var user = await _userManager.FindByNameAsync("admin");
                 await _userManager.AddToRoleAsync(user, "Admin");
@@ -168,6 +171,7 @@ namespace OSM.Data.EF
                     new Size() { Name="XS" }
                 };
                 _context.Sizes.AddRange(listSize);
+
             }
 
             if (_context.ProductCategories.Count() == 0)
@@ -213,6 +217,7 @@ namespace OSM.Data.EF
                         }}
                 };
                 _context.ProductCategories.AddRange(listProductCategory);
+                _context.SaveChanges();
             }
 
             if (!_context.SystemConfigs.Any(x => x.Id == "HomeTitle"))
@@ -245,6 +250,7 @@ namespace OSM.Data.EF
                     Status = Status.Active
                 });
             }
+            _context.SaveChanges();
         }
     }
 }

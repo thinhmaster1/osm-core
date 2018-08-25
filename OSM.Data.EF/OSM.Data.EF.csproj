@@ -5,12 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <Compile Remove="Migrations\20180822103419_initial.cs" />
+    <Compile Remove="Migrations\20180822120117_initial.cs" />
+    <Compile Remove="Migrations\20180822120928_initial.cs" />
+    <Compile Remove="Migrations\20180822121045_initial.cs" />
+    <Compile Remove="Migrations\20180822121218_initial.cs" />
+    <Compile Remove="Migrations\20180822121702_initial.cs" />
+    <Compile Remove="Migrations\20180822121949_initial.cs" />
+    <Compile Remove="Migrations\20180822122306_initial.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>

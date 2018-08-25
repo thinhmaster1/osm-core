@@ -13,8 +13,7 @@ namespace OSM.Data.EF.Configurations
         public override void Configure(EntityTypeBuilder<Function> entity)
         {
             entity.HasKey(c => c.Id);
-            entity.Property(c => c.Id).IsRequired()
-            .HasColumnType("varchar(128)");
+            entity.Property(c => c.Id).HasMaxLength(128).IsRequired();
         }
     }
 }

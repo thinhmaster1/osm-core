@@ -7,12 +7,12 @@ using System.Text;
 
 namespace OSM.Data.EF.Configurations
 {
-    public class PageConfiguration : DbEntityConfiguration<Page>
+    public class AnnouncementConfiguration : DbEntityConfiguration<Announcement>
     {
-        public override void Configure(EntityTypeBuilder<Page> entity)
+        public override void Configure(EntityTypeBuilder<Announcement> entity)
         {
-            entity.HasKey(c => c.Id);
-            entity.Property(c => c.Id).HasMaxLength(20).IsRequired();
+            entity.Property(c => c.Id).HasMaxLength(128).IsRequired();
         }
     }
 }
+

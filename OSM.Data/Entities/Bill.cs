@@ -16,24 +16,28 @@ namespace OSM.Data.Entities
         public Bill() { }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-             Status status, string customerId)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
             CustomerMobile = customerMobile;
             CustomerMessage = customerMessage;
+            BillStatus = billStatus;
+            PaymentMethod = paymentMethod;
             Status = status;
             CustomerId = customerId;
         }
 
         public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
-            Status status, string customerId)
+           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
         {
             Id = id;
             CustomerName = customerName;
             CustomerAddress = customerAddress;
             CustomerMobile = customerMobile;
             CustomerMessage = customerMessage;
+            BillStatus = billStatus;
+            PaymentMethod = paymentMethod;
             Status = status;
             CustomerId = customerId;
         }
@@ -53,15 +57,17 @@ namespace OSM.Data.Entities
         [MaxLength(256)]
         public string CustomerMessage { set; get; }
 
-        
+        public PaymentMethod PaymentMethod { set; get; }
+
+        public BillStatus BillStatus { set; get; }
+
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
 
         [DefaultValue(Status.Active)]
         public Status Status { set; get; } = Status.Active;
 
-        [StringLength(450)]
-        public string CustomerId { set; get; }
+        public Guid CustomerId { set; get; }
 
         [ForeignKey("CustomerId")]
         public virtual AppUser User { set; get; }

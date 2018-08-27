@@ -29,8 +29,6 @@
  
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\app\controllers\product\" />
   </ItemGroup>
 

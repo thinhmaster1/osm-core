@@ -9,7 +9,6 @@ using OSM.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace OSM.Application.Implementation
 {
@@ -30,7 +29,6 @@ namespace OSM.Application.Implementation
             var productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
             _productCategoryRepository.Add(productCategory);
             return productCategoryVm;
-
         }
 
         public void Delete(int id)

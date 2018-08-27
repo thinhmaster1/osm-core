@@ -1,7 +1,5 @@
 ﻿using OSM.Application.ViewModels.Product;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace OSM.Application.Interfaces
 {
@@ -22,6 +20,7 @@ namespace OSM.Application.Interfaces
         ProductCategoryViewModel GetById(int id);
 
         void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items);
+
         void ReOrder(int sourceId, int targetId);
 
         List<ProductCategoryViewModel> GetHomeCategories(int top);

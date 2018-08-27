@@ -6,14 +6,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OSM.Data.Entities
 {
     [Table("Bills")]
     public class Bill : DomainEntity<int>, ISwitchable, IDateTracking
     {
-        public Bill() { }
+        public Bill()
+        {
+        }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
             BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
@@ -41,6 +42,7 @@ namespace OSM.Data.Entities
             Status = status;
             CustomerId = customerId;
         }
+
         [Required]
         [MaxLength(256)]
         public string CustomerName { set; get; }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OSM.Utilities.Constants
+﻿namespace OSM.Utilities.Constants
 {
     public class CommonConstants
     {

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using OSM.Data.Entities;
-using OSM.Models;
 using OSM.Models.AccountViewModels;
 using OSM.Services;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace OSM.Controllers
 {
@@ -62,7 +57,7 @@ namespace OSM.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -431,7 +426,6 @@ namespace OSM.Controllers
             return View();
         }
 
-
         [HttpGet]
         public IActionResult AccessDenied()
         {
@@ -460,6 +454,6 @@ namespace OSM.Controllers
             }
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

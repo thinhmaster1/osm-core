@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OSM.Data;
-using OSM.Models;
-using OSM.Services;
-using OSM.Data.EF;
-using OSM.Data.Entities;
-using AutoMapper;
-using OSM.Data.IRepositories;
-using OSM.Data.EF.Repositories;
-using OSM.Application.Interfaces;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 using OSM.Application.Implementation;
+using OSM.Application.Interfaces;
+using OSM.Data.EF;
+using OSM.Data.EF.Repositories;
+using OSM.Data.Entities;
+using OSM.Data.IRepositories;
+using OSM.Helpers;
+using OSM.Services;
+using System;
 
 namespace OSM
 {
@@ -70,17 +68,18 @@ namespace OSM
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddTransient<DbInitializer>();
-
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
 
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory  )
         {
+            loggerFactory.AddFile("Logs/osm-{Date}.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -101,8 +100,9 @@ namespace OSM
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(name: "areaRoute",
+                    template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
             });
-
         }
     }
 }

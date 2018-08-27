@@ -5,14 +5,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OSM.Data.Entities
 {
     [Table("Blogs")]
     public class Blog : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData
     {
-        public Blog() { }
+        public Blog()
+        {
+        }
+
         public Blog(string name, string thumbnailImage,
            string description, string content, bool? homeFlag, bool? hotFlag,
            string tags, Status status, string seoPageTitle,
@@ -53,10 +55,10 @@ namespace OSM.Data.Entities
             SeoKeywords = seoMetaKeyword;
             SeoDescription = seoMetaDescription;
         }
+
         [Required]
         [MaxLength(256)]
         public string Name { set; get; }
-
 
         [MaxLength(256)]
         public string Image { set; get; }

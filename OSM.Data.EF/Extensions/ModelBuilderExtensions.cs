@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OSM.Data.EF.Extensions
 {
@@ -20,5 +17,4 @@ namespace OSM.Data.EF.Extensions
     {
         public abstract void Configure(EntityTypeBuilder<TEntity> entity);
     }
-
 }

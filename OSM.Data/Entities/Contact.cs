@@ -1,17 +1,13 @@
 ﻿using OSM.Data.Enums;
 using OSM.Infrastructure.SharedKernel;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OSM.Data.Entities
 {
     [Table("ContactDetails")]
     public class Contact : DomainEntity<string>
     {
-
         [StringLength(250)]
         [Required]
         public string Name { set; get; }

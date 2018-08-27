@@ -1,8 +1,5 @@
 ﻿using OSM.Infrastructure.SharedKernel;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OSM.Data.Entities
 {
@@ -10,7 +7,6 @@ namespace OSM.Data.Entities
     public class BlogTag : DomainEntity<int>
     {
         public int BlogId { set; get; }
-
 
         public string TagId { set; get; }
 

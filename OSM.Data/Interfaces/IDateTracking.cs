@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OSM.Data.Interfaces
 {
@@ -8,6 +6,5 @@ namespace OSM.Data.Interfaces
     {
         DateTime DateCreated { get; set; }
         DateTime DateModified { set; get; }
-
     }
 }

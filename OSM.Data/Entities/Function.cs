@@ -1,11 +1,8 @@
 ﻿using OSM.Data.Enums;
 using OSM.Data.Interfaces;
 using OSM.Infrastructure.SharedKernel;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OSM.Data.Entities
 {
@@ -14,8 +11,8 @@ namespace OSM.Data.Entities
     {
         public Function()
         {
-
         }
+
         public Function(string name, string url, string parentId, string iconCss, int sortOrder)
         {
             this.Name = name;
@@ -25,6 +22,7 @@ namespace OSM.Data.Entities
             this.SortOrder = sortOrder;
             this.Status = Status.Active;
         }
+
         [Required]
         [StringLength(128)]
         public string Name { set; get; }
@@ -32,7 +30,6 @@ namespace OSM.Data.Entities
         [Required]
         [StringLength(250)]
         public string URL { set; get; }
-
 
         [StringLength(128)]
         public string ParentId { set; get; }

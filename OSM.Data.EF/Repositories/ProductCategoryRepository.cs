@@ -1,15 +1,14 @@
 ﻿using OSM.Data.Entities;
 using OSM.Data.IRepositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace OSM.Data.EF.Repositories
 {
     public class ProductCategoryRepository : EFRepository<ProductCategory, int>, IProductCategoryRepository
     {
-        AppDbContext _context;
+        private AppDbContext _context;
+
         public ProductCategoryRepository(AppDbContext context) : base(context)
         {
             _context = context;

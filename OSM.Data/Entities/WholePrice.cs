@@ -1,15 +1,11 @@
 ﻿using OSM.Infrastructure.SharedKernel;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OSM.Data.Entities
 {
     [Table("WholePrices")]
     public class WholePrice : DomainEntity<int>
     {
-
         public int ProductId { get; set; }
 
         public int FromQuantity { get; set; }

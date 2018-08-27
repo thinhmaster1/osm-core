@@ -2,9 +2,7 @@
 using OSM.Data.Enums;
 using OSM.Data.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OSM.Data.Entities
 {

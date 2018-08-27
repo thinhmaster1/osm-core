@@ -1,15 +1,14 @@
 ﻿using OSM.Infrastructure.SharedKernel;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OSM.Data.Entities
 {
     [Table("BillDetails")]
     public class BillDetail : DomainEntity<int>
     {
-        public BillDetail() { }
+        public BillDetail()
+        {
+        }
 
         public BillDetail(int id, int billId, int productId, int quantity, decimal price, int colorId, int sizeId)
         {
@@ -31,6 +30,7 @@ namespace OSM.Data.Entities
             ColorId = colorId;
             SizeId = sizeId;
         }
+
         public int BillId { set; get; }
 
         public int ProductId { set; get; }

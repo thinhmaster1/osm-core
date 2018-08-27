@@ -9,10 +9,8 @@ using OSM.Data.EF.Extensions;
 using OSM.Data.Entities;
 using OSM.Data.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace OSM.Data.EF
 {
@@ -111,6 +109,7 @@ namespace OSM.Data.EF
             return base.SaveChanges();
         }
     }
+
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         public AppDbContext CreateDbContext(string[] args)

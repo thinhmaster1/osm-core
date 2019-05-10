@@ -1,0 +1,40 @@
+﻿@model List<OSM.Application.ViewModels.Bill.BillViewModel>
+@{
+    ViewData["Title"] = "Order List";
+}
+
+<div class="my-account">
+    <div class="page-title">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <div class="orders-list table-responsive">
+        <!--orders list table-->
+        <table class="table table-bordered cart_summary table-striped">
+            <thead>
+                <tr>
+                    <!--titles for td-->
+                    <th>Order Number</th>
+                    <th>Order Date</th>
+                    <th>Order Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <!--order number-->
+                        <td data-title="Order Number"><a asp-action="OrderDetail" asp-route-id="@item.Id" class="order-number">#@item.Id</a></td>
+                        <!--order date-->
+                        <td data-title="Order Date">@item.DateCreated</td>
+                        <!--order status-->
+                        <td data-title="Order Status">@item.BillStatus</td>
+
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

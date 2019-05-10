@@ -4,9 +4,8 @@ using OSM.Application.Interfaces;
 using OSM.Application.ViewModels.Product;
 using OSM.Data.Entities;
 using OSM.Data.Enums;
-using OSM.Data.IRepositories;
 using OSM.Infrastructure.Interfaces;
-using System;
+using OSM.Utilities.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,10 +13,10 @@ namespace OSM.Application.Implementation
 {
     public class ProductCategoryService : IProductCategoryService
     {
-        private IProductCategoryRepository _productCategoryRepository;
+        private IRepository<ProductCategory, int> _productCategoryRepository;
         private IUnitOfWork _unitOfWork;
 
-        public ProductCategoryService(IProductCategoryRepository productCategoryRepository,
+        public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository,
             IUnitOfWork unitOfWork)
         {
             _productCategoryRepository = productCategoryRepository;
@@ -62,6 +61,31 @@ namespace OSM.Application.Implementation
              .ToList();
         }
 
+        public PagedResult<ProductCategoryViewModel> GetAllPaging(string keyword, int page, int pageSize)
+        {
+            var query = _productCategoryRepository.FindAll(x => x.Status == Status.Active);
+            if (!string.IsNullOrEmpty(keyword))
+                query = query.Where(x => x.Name.Contains(keyword));
+
+
+            int totalRow = query.Count();
+
+            query = query.OrderByDescending(x => x.Name)
+                .Skip((page - 1) * pageSize).Take(pageSize);
+
+            var data = query.ProjectTo<ProductCategoryViewModel>().ToList();
+
+            var paginationSet = new PagedResult<ProductCategoryViewModel>()
+            {
+                Results = data,
+                CurrentPage = page,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+            return paginationSet;
+
+        }
+
         public ProductCategoryViewModel GetById(int id)
         {
             return Mapper.Map<ProductCategory, ProductCategoryViewModel>(_productCategoryRepository.FindById(id));
@@ -88,7 +112,13 @@ namespace OSM.Application.Implementation
 
         public void ReOrder(int sourceId, int targetId)
         {
-            throw new NotImplementedException();
+            var source = _productCategoryRepository.FindById(sourceId);
+            var target = _productCategoryRepository.FindById(targetId);
+            int tempOrder = source.SortOrder;
+            source.SortOrder = target.SortOrder;
+            target.SortOrder = tempOrder;
+            _productCategoryRepository.Update(source);
+            _productCategoryRepository.Update(target);
         }
 
         public void Save()
@@ -98,12 +128,22 @@ namespace OSM.Application.Implementation
 
         public void Update(ProductCategoryViewModel productCategoryVm)
         {
-            throw new NotImplementedException();
+            var productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
+            _productCategoryRepository.Update(productCategory);
         }
 
         public void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items)
         {
-            throw new NotImplementedException();
+            var sourceCategory = _productCategoryRepository.FindById(sourceId);
+            sourceCategory.ParentId = targetId;
+            _productCategoryRepository.Update(sourceCategory);
+            //Get all sibling
+            var sibling = _productCategoryRepository.FindAll(x => items.ContainsKey(x.Id));
+            foreach (var child in sibling)
+            {
+                child.SortOrder = items[child.Id];
+                _productCategoryRepository.Update(child);
+            }
         }
     }
 }

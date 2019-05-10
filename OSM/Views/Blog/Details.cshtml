@@ -1,0 +1,42 @@
+﻿@model OSM.Application.ViewModels.Blog.BlogViewModel
+@{
+    ViewData["Title"] = Model.Name;
+    ViewData["MetaKeyword"] = Model.Name;
+    ViewData["MetaDescription"] = Model.Name;
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+                    <li class="">@Model.Name</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Container -->
+<section class="blog_post">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="entry-detail">
+                    <div class="page-title">
+                    </div>
+                    <div class="entry-meta-data">
+
+                        <div class="blog-top-desc">
+                            <h1>@Model.Name</h1>
+                        </div>
+
+                    </div>
+                    <div class="content-text clearfix">
+                        @Html.Raw(Model.Content)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main Container End --> 

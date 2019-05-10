@@ -12,12 +12,10 @@ namespace OSM.Data.Entities
     [Table("Bills")]
     public class Bill : DomainEntity<int>, ISwitchable, IDateTracking
     {
-        public Bill()
-        {
-        }
+        public Bill() { }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
@@ -30,7 +28,7 @@ namespace OSM.Data.Entities
         }
 
         public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
-           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
+           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId)
         {
             Id = id;
             CustomerName = customerName;
@@ -69,7 +67,7 @@ namespace OSM.Data.Entities
         [DefaultValue(Status.Active)]
         public Status Status { set; get; } = Status.Active;
 
-        public Guid CustomerId { set; get; }
+        public Guid? CustomerId { set; get; }
 
         [ForeignKey("CustomerId")]
         public virtual AppUser User { set; get; }

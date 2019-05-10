@@ -1,4 +1,5 @@
 ﻿using OSM.Application.ViewModels.Product;
+using OSM.Utilities.Dtos;
 using System.Collections.Generic;
 
 namespace OSM.Application.Interfaces
@@ -6,6 +7,8 @@ namespace OSM.Application.Interfaces
     public interface IProductCategoryService
     {
         ProductCategoryViewModel Add(ProductCategoryViewModel productCategoryVm);
+
+        PagedResult<ProductCategoryViewModel> GetAllPaging(string keyword, int page, int pageSize);
 
         void Update(ProductCategoryViewModel productCategoryVm);
 

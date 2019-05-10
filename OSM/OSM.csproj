@@ -1,35 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-OSM-BAC96975-0210-4CEE-8BDD-A1E298DBDD6E</UserSecretsId>
-    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
 
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" PrivateAssets="All" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
+    <PackageReference Include="SkiaSharp" Version="1.60.3" />
+    <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.5.0" />
+    <PackageReference Include="WebMarkupMin.NUglify" Version="2.5.5" />
   </ItemGroup>
 
  
 
   <ItemGroup>
+    <ProjectReference Include="..\OSM.Application.Dapper\OSM.Application.Dapper.csproj" />
     <ProjectReference Include="..\OSM.Application\OSM.Application.csproj" />
     <ProjectReference Include="..\OSM.Data.EF\OSM.Data.EF.csproj" />
     <ProjectReference Include="..\OSM.Data\OSM.Data.csproj" />
     <ProjectReference Include="..\OSM.Infrastructure\OSM.Infrastructure.csproj" />
     <ProjectReference Include="..\OSM.Intilities\OSM.Utilities.csproj" />
-  </ItemGroup>
-
- 
-
-  <ItemGroup>
-    <Folder Include="wwwroot\app\controllers\product\" />
   </ItemGroup>
 
  
@@ -53,6 +54,27 @@
     <Content Update="Areas\Admin\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\Components\Brand\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\Components\MainMenu\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\Components\MobileMenu\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\Components\Pager\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+ 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\client-side\images\products\clocks\" />
+    <Folder Include="wwwroot\client-side\images\products\books\" />
+    <Folder Include="wwwroot\client-side\images\products\toys\" />
+    <Folder Include="wwwroot\uploaded\images\" />
   </ItemGroup>
 
 </Project>

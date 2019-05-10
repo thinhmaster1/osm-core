@@ -1,0 +1,1050 @@
+2019-04-24T15:14:10.5534166+07:00 0HLM8HJA6QCME:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44335/   (ca22a1cb)
+2019-04-24T15:14:10.5534166+07:00 0HLM8HJA6QCMD:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:54989/  0 (ca22a1cb)
+2019-04-24T15:14:10.6002736+07:00 0HLM8HJA6QCMD:00000001 [INF] Request finished in 36.7168ms 200  (791a596a)
+2019-04-24T15:14:10.7833677+07:00 0HLM8HJA6QCME:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:10.9773964+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("129"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-04-24T15:14:11.2737103+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("90"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-04-24T15:14:11.3739711+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("47"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-24T15:14:11.4389414+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("45"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-04-24T15:14:11.5043604+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("40"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-04-24T15:14:11.5694058+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("35"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-04-24T15:14:11.7933579+07:00 0HLM8HJA6QCME:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "OSM.Controllers.HomeController.Index (OSM)" (a44c0341)
+2019-04-24T15:14:11.9052307+07:00 0HLM8HJA6QCME:00000001 [INF] Executing action method "OSM.Controllers.HomeController.Index (OSM)" - Validation state: Valid (dad538d7)
+2019-04-24T15:14:11.9588922+07:00 0HLM8HJA6QCME:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-04-24T15:14:12.1023497+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("90"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2019-04-24T15:14:12.2330506+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("69"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-04-24T15:14:12.3498550+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("69"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-04-24T15:14:12.4737648+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("113"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-24T15:14:12.6072249+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("67"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription], [x].[Author]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2019-04-24T15:14:12.6804093+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("61"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[BlogId], [x.BlogTags].[TagId]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-04-24T15:14:12.7423714+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("49"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-04-24T15:14:12.7538064+07:00 0HLM8HJA6QCME:00000001 [INF] Executed action method "OSM.Controllers.HomeController.Index (OSM)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 842.6064ms. (50a9e262)
+2019-04-24T15:14:12.7835407+07:00 0HLM8HJA6QCME:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-24T15:14:12.9548207+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("92"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-04-24T15:14:13.1139179+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("94"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-24T15:14:13.1837726+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("66"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-24T15:14:13.2419292+07:00 0HLM8HJA6QCME:00000001 [WRN] The 'Cache-Control' and 'Pragma' headers have been overridden and set to 'no-cache, no-store' and 'no-cache' respectively to prevent caching of this response. Any response that uses antiforgery should not be cached. (bf4358e5)
+2019-04-24T15:14:13.3720242+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("97"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-24T15:14:13.4466792+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("72"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-24T15:14:13.5341729+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("69"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-24T15:14:13.5961262+07:00 0HLM8HJA6QCME:00000001 [INF] Executed DbCommand ("58"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-24T15:14:13.7219783+07:00 0HLM8HJA6QCME:00000001 [INF] Executed ViewResult - view "Index" executed in 949.3981ms. (f66409e9)
+2019-04-24T15:14:13.7392506+07:00 0HLM8HJA6QCME:00000001 [INF] Executed action "OSM.Controllers.HomeController.Index (OSM)" in 1930.7357ms (afa2e885)
+2019-04-24T15:14:14.2489314+07:00 0HLM8HJA6QCME:00000001 [INF] Request finished in 3624.1509ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-24T15:14:14.2869880+07:00 0HLM8HJA6QCME:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44335/client-side/images/products/product-1.jpg   (ca22a1cb)
+2019-04-24T15:14:14.2964335+07:00 0HLM8HJA6QCMD:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44335/app/shared/osm.js   (ca22a1cb)
+2019-04-24T15:14:14.3162431+07:00 0HLM8HJA6QCME:00000002 [INF] Request finished in 19.3541ms 404  (791a596a)
+2019-04-24T15:14:14.3221652+07:00 0HLM8HJA6QCMD:00000002 [INF] The file "/app/shared/osm.js" was not modified (f1f8d725)
+2019-04-24T15:14:14.3296252+07:00 0HLM8HJA6QCMD:00000002 [INF] Request finished in 51.3764ms 304 application/javascript (791a596a)
+2019-04-24T15:14:14.8510297+07:00 0HLM8HJA6QCME:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:44335/osmhub/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2019-04-24T15:14:14.9259681+07:00 0HLM8HJA6QCMD:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44335/   (ca22a1cb)
+2019-04-24T15:14:14.9324405+07:00 0HLM8HJA6QCME:00000003 [INF] Request finished in 76.109ms 200 application/json (791a596a)
+2019-04-24T15:14:14.9437180+07:00 0HLM8HJA6QCMD:00000003 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "OSM.Controllers.HomeController.Index (OSM)" (a44c0341)
+2019-04-24T15:14:14.9815715+07:00 0HLM8HJA6QCMD:00000003 [INF] Executing action method "OSM.Controllers.HomeController.Index (OSM)" - Validation state: Valid (dad538d7)
+2019-04-24T15:14:14.9846851+07:00 0HLM8HJA6QCMD:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:15.0199868+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("32"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2019-04-24T15:14:15.0724863+07:00 0HLM8HJA6QCME:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44335/osmhub?id=tZVI5JWlJFIQwnaz3TOmfw   (ca22a1cb)
+2019-04-24T15:14:15.0749898+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("49"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-04-24T15:14:15.1097160+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("31"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-04-24T15:14:15.1502400+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("37"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-24T15:14:15.1983833+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("34"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription], [x].[Author]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2019-04-24T15:14:15.2364301+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("35"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[BlogId], [x.BlogTags].[TagId]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-04-24T15:14:15.2723410+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("33"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-04-24T15:14:15.2756794+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed action method "OSM.Controllers.HomeController.Index (OSM)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 291.1185ms. (50a9e262)
+2019-04-24T15:14:15.2800662+07:00 0HLM8HJA6QCMD:00000003 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-24T15:14:15.3421529+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("37"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-04-24T15:14:15.4405802+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("42"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-24T15:14:15.4858333+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("42"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-24T15:14:15.4906632+07:00 0HLM8HJA6QCMD:00000003 [WRN] The 'Cache-Control' and 'Pragma' headers have been overridden and set to 'no-cache, no-store' and 'no-cache' respectively to prevent caching of this response. Any response that uses antiforgery should not be cached. (bf4358e5)
+2019-04-24T15:14:15.5513664+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("57"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-24T15:14:15.6037262+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("48"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-24T15:14:15.6557590+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("47"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-24T15:14:15.7101687+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed DbCommand ("48"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-24T15:14:15.7178328+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed ViewResult - view "Index" executed in 437.7731ms. (f66409e9)
+2019-04-24T15:14:15.7215020+07:00 0HLM8HJA6QCMD:00000003 [INF] Executed action "OSM.Controllers.HomeController.Index (OSM)" in 774.2002ms (afa2e885)
+2019-04-24T15:14:15.7708662+07:00 0HLM8HJA6QCMD:00000003 [INF] Request finished in 813.158ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-24T15:14:15.7991946+07:00 0HLM8HJA6QCME:00000004 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2019-04-24T15:14:30.5519181+07:00 0HLM8HJA6QCMD:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/home/   (ca22a1cb)
+2019-04-24T15:14:30.5563113+07:00 0HLM8HJA6QCMD:00000004 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Home\"}". Executing action "OSM.Areas.Admin.Controllers.HomeController.Index (OSM)" (a44c0341)
+2019-04-24T15:14:30.5723493+07:00 0HLM8HJA6QCMD:00000004 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:30.6058888+07:00 0HLM8HJA6QCMD:00000004 [INF] Executing action method "OSM.Areas.Admin.Controllers.HomeController.Index (OSM)" - Validation state: Valid (dad538d7)
+2019-04-24T15:14:30.6084577+07:00 0HLM8HJA6QCMD:00000004 [INF] Executed action method "OSM.Areas.Admin.Controllers.HomeController.Index (OSM)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.6007ms. (50a9e262)
+2019-04-24T15:14:30.6198272+07:00 0HLM8HJA6QCMD:00000004 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-24T15:14:30.6772589+07:00 0HLM8HJA6QCMD:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:30.7911010+07:00 0HLM8HJA6QCMD:00000004 [INF] Executed DbCommand ("100"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[URL], [x].[ParentId], [x].[IconCss], [x].[SortOrder], [x].[Status]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-04-24T15:14:30.9147115+07:00 0HLM8HJA6QCMD:00000004 [INF] Executed ViewResult - view "Index" executed in 303.3184ms. (f66409e9)
+2019-04-24T15:14:30.9256132+07:00 0HLM8HJA6QCMD:00000004 [INF] Executed action "OSM.Areas.Admin.Controllers.HomeController.Index (OSM)" in 367.4731ms (afa2e885)
+2019-04-24T15:14:31.0234454+07:00 0HLM8HJA6QCMD:00000004 [INF] Request finished in 469.8346ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-24T15:14:31.1284751+07:00 0HLM8HJA6QCMD:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin-side/js/custom.min.js   (ca22a1cb)
+2019-04-24T15:14:31.1471202+07:00 0HLM8HJA6QCMD:00000005 [INF] The file "/admin-side/js/custom.min.js" was not modified (f1f8d725)
+2019-04-24T15:14:31.1774124+07:00 0HLM8HJA6QCMF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44335/app/shared/osm.js?v=MVKwJ9UK4L_Hw1vo0bfhTafxnXnWQeGEsOJsuix0-SI   (ca22a1cb)
+2019-04-24T15:14:31.1822329+07:00 0HLM8HJA6QCME:00000004 [INF] Request finished in 16078.8034ms 101  (791a596a)
+2019-04-24T15:14:31.1845315+07:00 0HLM8HJA6QCMD:00000005 [INF] Request finished in 30.306ms 304 application/javascript (791a596a)
+2019-04-24T15:14:31.1853947+07:00 0HLM8HJA6QCMF:00000001 [INF] The file "/app/shared/osm.js" was not modified (f1f8d725)
+2019-04-24T15:14:31.1936197+07:00 0HLM8HJA6QCMF:00000001 [INF] Request finished in 43.4856ms 304 application/javascript (791a596a)
+2019-04-24T15:14:31.3403345+07:00 0HLM8HJA6QCMD:00000006 [INF] Request starting HTTP/1.1 POST http://localhost:44335/osmhub/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2019-04-24T15:14:31.3492613+07:00 0HLM8HJA6QCMD:00000006 [INF] Request finished in 3.8375ms 200 application/json (791a596a)
+2019-04-24T15:14:31.3508642+07:00 0HLM8HJA6QCMF:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/announcement/GetAllPaging?page=1&pageSize=10   (ca22a1cb)
+2019-04-24T15:14:31.3663321+07:00 0HLM8HJA6QCMD:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44335/osmhub?id=l5cL1WzSH_UmRZLha3UXNg   (ca22a1cb)
+2019-04-24T15:14:31.3801811+07:00 0HLM8HJA6QCMF:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Announcement\"}". Executing action "OSM.Areas.Admin.Controllers.AnnouncementController.GetAllPaging (OSM)" (a44c0341)
+2019-04-24T15:14:31.3835300+07:00 0HLM8HJA6QCMF:00000002 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:31.3894023+07:00 0HLM8HJA6QCMG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44335/Admin/Home/GetRevenue   (ca22a1cb)
+2019-04-24T15:14:31.3983777+07:00 0HLM8HJA6QCMG:00000001 [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "OSM.Areas.Admin.Controllers.HomeController.GetRevenue (OSM)" (a44c0341)
+2019-04-24T15:14:31.4026367+07:00 0HLM8HJA6QCMG:00000001 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:31.4451935+07:00 0HLM8HJA6QCMD:00000007 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2019-04-24T15:14:31.4816172+07:00 0HLM8HJA6QCMG:00000001 [INF] Executing action method "OSM.Areas.Admin.Controllers.HomeController.GetRevenue (OSM)" with arguments (["", ""]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:31.4816837+07:00 0HLM8HJA6QCMF:00000002 [INF] Executing action method "OSM.Areas.Admin.Controllers.AnnouncementController.GetAllPaging (OSM)" with arguments (["1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:31.9064020+07:00 0HLM8HJA6QCMF:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:31.9721154+07:00 0HLM8HJA6QCMF:00000002 [INF] Executed DbCommand ("42"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))" (0723d8ff)
+2019-04-24T15:14:32.0210986+07:00 0HLM8HJA6QCMF:00000002 [INF] Executed DbCommand ("32"ms) [Parameters=["@__userId_0='?' (DbType = Guid), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Title], [x].[Content], [x].[UserId], [x].[DateCreated], [x].[DateModified], [x].[Status]
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))
+ORDER BY [x].[DateCreated] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2019-04-24T15:14:32.0335241+07:00 0HLM8HJA6QCMF:00000002 [INF] Executed action method "OSM.Areas.Admin.Controllers.AnnouncementController.GetAllPaging (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 547.9333ms. (50a9e262)
+2019-04-24T15:14:32.0410828+07:00 0HLM8HJA6QCMF:00000002 [INF] Executing ObjectResult, writing value of type '"OSM.Utilities.Dtos.PagedResult`1[[OSM.Application.ViewModels.System.AnnouncementViewModel, OSM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-24T15:14:32.4756056+07:00 0HLM8HJA6QCMG:00000001 [INF] Executed action "OSM.Areas.Admin.Controllers.HomeController.GetRevenue (OSM)" in 1074.7139ms (afa2e885)
+2019-04-24T15:14:32.6052656+07:00 0HLM8HJA6QCMF:00000002 [INF] Executed action "OSM.Areas.Admin.Controllers.AnnouncementController.GetAllPaging (OSM)" in 1222.2161ms (afa2e885)
+2019-04-24T15:14:32.6133825+07:00 0HLM8HJA6QCMF:00000002 [INF] Request finished in 1258.1502ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:32.7248072+07:00 0HLM8HJA6QCMG:00000001 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetRevenueDaily'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__122_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in C:\projects\dapper\Dapper\SqlMapper.Async.cs:line 419
+   at OSM.Application.Dapper.Implementation.ReportService.GetReportAsync(String fromDate, String toDate) in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Application.Dapper\Implementation\ReportService.cs:line 38
+   at OSM.Areas.Admin.Controllers.HomeController.GetRevenue(String fromDate, String toDate) in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM\Areas\Admin\Controllers\HomeController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebMarkupMin.AspNetCore2.WebMarkupMinMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at OSM.Extensions.ImageResizerMiddleware.Invoke(HttpContext context) in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM\Extensions\ImageResizerMiddleware.cs:line 70
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:119af41e-1b0f-4b6a-807e-95c405c7e6d0
+Error Number:2812,State:62,Class:16
+2019-04-24T15:14:32.7854262+07:00 0HLM8HJA6QCMG:00000001 [INF] Request finished in 1377.6455ms 500 text/html; charset=utf-8 (791a596a)
+2019-04-24T15:14:40.6653857+07:00 0HLM8HJA6QCMF:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/product/index   (ca22a1cb)
+2019-04-24T15:14:40.6706113+07:00 0HLM8HJA6QCMF:00000003 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.Index (OSM)" (a44c0341)
+2019-04-24T15:14:40.6726893+07:00 0HLM8HJA6QCMF:00000003 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:40.7029051+07:00 0HLM8HJA6QCMF:00000003 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.Index (OSM)" - Validation state: Valid (dad538d7)
+2019-04-24T15:14:40.7050993+07:00 0HLM8HJA6QCMF:00000003 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.Index (OSM)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.292ms. (50a9e262)
+2019-04-24T15:14:40.7194276+07:00 0HLM8HJA6QCMF:00000003 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-04-24T15:14:40.7966245+07:00 0HLM8HJA6QCMF:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:40.8439798+07:00 0HLM8HJA6QCMF:00000003 [INF] Executed DbCommand ("41"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[URL], [x].[ParentId], [x].[IconCss], [x].[SortOrder], [x].[Status]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-04-24T15:14:40.8638743+07:00 0HLM8HJA6QCMF:00000003 [INF] Executed ViewResult - view "Index" executed in 156.7033ms. (f66409e9)
+2019-04-24T15:14:40.8660057+07:00 0HLM8HJA6QCMF:00000003 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.Index (OSM)" in 193.3994ms (afa2e885)
+2019-04-24T15:14:40.9158434+07:00 0HLM8HJA6QCMF:00000003 [INF] Request finished in 211.8561ms 200 text/html; charset=utf-8 (791a596a)
+2019-04-24T15:14:40.9272078+07:00 0HLM8HJA6QCMD:00000007 [INF] Request finished in 9552.7632ms 101  (791a596a)
+2019-04-24T15:14:40.9275245+07:00 0HLM8HJA6QCMG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44335/app/controllers/product/index.js?v=V7IeK2wuQAnmN_O2HBcM9V7wT9UcMA2nBhCEd3XP7po   (ca22a1cb)
+2019-04-24T15:14:40.9332261+07:00 0HLM8HJA6QCMG:00000002 [INF] The file "/app/controllers/product/index.js" was not modified (f1f8d725)
+2019-04-24T15:14:40.9544443+07:00 0HLM8HJA6QCMG:00000002 [INF] Request finished in 10.2997ms 304 application/javascript (791a596a)
+2019-04-24T15:14:40.9553689+07:00 0HLM8HJA6QCMF:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44335/app/controllers/product/quantity-management.js?v=WZwZyRP9Js-fBvXQOeY9JHWI2s644D06PrXzdaYpLXw   (ca22a1cb)
+2019-04-24T15:14:40.9584089+07:00 0HLM8HJA6QCMF:00000004 [INF] The file "/app/controllers/product/quantity-management.js" was not modified (f1f8d725)
+2019-04-24T15:14:40.9615628+07:00 0HLM8HJA6QCMF:00000004 [INF] Request finished in 6.0597ms 304 application/javascript (791a596a)
+2019-04-24T15:14:41.0359624+07:00 0HLM8HJA6QCMG:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:44335/osmhub/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2019-04-24T15:14:41.0429666+07:00 0HLM8HJA6QCMG:00000003 [INF] Request finished in 4.8272ms 200 application/json (791a596a)
+2019-04-24T15:14:41.0447459+07:00 0HLM8HJA6QCMF:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/announcement/GetAllPaging?page=1&pageSize=10   (ca22a1cb)
+2019-04-24T15:14:41.0490262+07:00 0HLM8HJA6QCMF:00000005 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Announcement\"}". Executing action "OSM.Areas.Admin.Controllers.AnnouncementController.GetAllPaging (OSM)" (a44c0341)
+2019-04-24T15:14:41.0511679+07:00 0HLM8HJA6QCMF:00000005 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:41.0825048+07:00 0HLM8HJA6QCMF:00000005 [INF] Executing action method "OSM.Areas.Admin.Controllers.AnnouncementController.GetAllPaging (OSM)" with arguments (["1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:41.0861158+07:00 0HLM8HJA6QCMF:00000005 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:41.1402104+07:00 0HLM8HJA6QCMH:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/product/GetAllPaging?categoryId=--Category--&keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-24T15:14:41.1915336+07:00 0HLM8HJA6QCMG:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44335/osmhub?id=OBYttheo2pYVr30FA4Vkjg   (ca22a1cb)
+2019-04-24T15:14:41.1963385+07:00 0HLM8HJA6QCMF:00000005 [INF] Executed DbCommand ("82"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))" (0723d8ff)
+2019-04-24T15:14:41.2026704+07:00 0HLM8HJA6QCMH:00000001 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetAllPaging (OSM)" (a44c0341)
+2019-04-24T15:14:41.2213236+07:00 0HLM8HJA6QCMI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/product/GetAllCategories   (ca22a1cb)
+2019-04-24T15:14:41.2577878+07:00 0HLM8HJA6QCMH:00000001 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:41.2599915+07:00 0HLM8HJA6QCMI:00000001 [INF] Route matched with "{area = \"Admin\", action = \"GetAllCategories\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetAllCategories (OSM)" (a44c0341)
+2019-04-24T15:14:41.2705556+07:00 0HLM8HJA6QCMF:00000005 [INF] Executed DbCommand ("53"ms) [Parameters=["@__userId_0='?' (DbType = Guid), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Title], [x].[Content], [x].[UserId], [x].[DateCreated], [x].[DateModified], [x].[Status]
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))
+ORDER BY [x].[DateCreated] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2019-04-24T15:14:41.2752470+07:00 0HLM8HJA6QCMI:00000001 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:41.2827331+07:00 0HLM8HJA6QCMF:00000005 [INF] Executed action method "OSM.Areas.Admin.Controllers.AnnouncementController.GetAllPaging (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 188.1776ms. (50a9e262)
+2019-04-24T15:14:41.3169024+07:00 0HLM8HJA6QCMF:00000005 [INF] Executing ObjectResult, writing value of type '"OSM.Utilities.Dtos.PagedResult`1[[OSM.Application.ViewModels.System.AnnouncementViewModel, OSM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-24T15:14:41.3199759+07:00 0HLM8HJA6QCMI:00000001 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetAllCategories (OSM)" - Validation state: Valid (dad538d7)
+2019-04-24T15:14:41.3512953+07:00 0HLM8HJA6QCMG:00000004 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2019-04-24T15:14:41.3542260+07:00 0HLM8HJA6QCMF:00000005 [INF] Executed action "OSM.Areas.Admin.Controllers.AnnouncementController.GetAllPaging (OSM)" in 269.9269ms (afa2e885)
+2019-04-24T15:14:41.3566450+07:00 0HLM8HJA6QCMI:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:41.3624603+07:00 0HLM8HJA6QCMH:00000001 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetAllPaging (OSM)" with arguments (["", "", "1", "10"]) - Validation state: Invalid (4e3479ed)
+2019-04-24T15:14:41.4012225+07:00 0HLM8HJA6QCMF:00000005 [INF] Request finished in 316.9919ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:41.4034376+07:00 0HLM8HJA6QCMH:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:41.4256822+07:00 0HLM8HJA6QCMI:00000001 [INF] Executed DbCommand ("45"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-04-24T15:14:41.5021366+07:00 0HLM8HJA6QCMI:00000001 [INF] Executed DbCommand ("33"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-04-24T15:14:41.5064891+07:00 0HLM8HJA6QCMI:00000001 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetAllCategories (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 182.5685ms. (50a9e262)
+2019-04-24T15:14:41.5090175+07:00 0HLM8HJA6QCMH:00000001 [INF] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1" (0723d8ff)
+2019-04-24T15:14:41.5101403+07:00 0HLM8HJA6QCMI:00000001 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[OSM.Application.ViewModels.Product.ProductCategoryViewModel, OSM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-24T15:14:41.5427552+07:00 0HLM8HJA6QCMI:00000001 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetAllCategories (OSM)" in 277.891ms (afa2e885)
+2019-04-24T15:14:41.5513715+07:00 0HLM8HJA6QCMI:00000001 [INF] Request finished in 344.6931ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:41.5890034+07:00 0HLM8HJA6QCMH:00000001 [INF] Executed DbCommand ("41"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-24T15:14:41.6308163+07:00 0HLM8HJA6QCMH:00000001 [INF] Executed DbCommand ("36"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-24T15:14:41.6344288+07:00 0HLM8HJA6QCMH:00000001 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetAllPaging (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 269.5331ms. (50a9e262)
+2019-04-24T15:14:41.6370619+07:00 0HLM8HJA6QCMH:00000001 [INF] Executing ObjectResult, writing value of type '"OSM.Utilities.Dtos.PagedResult`1[[OSM.Application.ViewModels.Product.ProductViewModel, OSM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-24T15:14:41.6432371+07:00 0HLM8HJA6QCMH:00000001 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetAllPaging (OSM)" in 438.6154ms (afa2e885)
+2019-04-24T15:14:41.6482452+07:00 0HLM8HJA6QCMH:00000001 [INF] Request finished in 509.2977ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:41.6637396+07:00 0HLM8HJA6QCMF:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/product/GetAllPaging?categoryId=&keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-04-24T15:14:41.6668154+07:00 0HLM8HJA6QCMF:00000006 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetAllPaging (OSM)" (a44c0341)
+2019-04-24T15:14:41.6707422+07:00 0HLM8HJA6QCMF:00000006 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:41.7020038+07:00 0HLM8HJA6QCMF:00000006 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetAllPaging (OSM)" with arguments (["", "", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:41.7044941+07:00 0HLM8HJA6QCMF:00000006 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:41.7356936+07:00 0HLM8HJA6QCMF:00000006 [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1" (0723d8ff)
+2019-04-24T15:14:41.7665435+07:00 0HLM8HJA6QCMF:00000006 [INF] Executed DbCommand ("28"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-04-24T15:14:41.8010060+07:00 0HLM8HJA6QCMF:00000006 [INF] Executed DbCommand ("32"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-04-24T15:14:41.8039767+07:00 0HLM8HJA6QCMF:00000006 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetAllPaging (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 99.8706ms. (50a9e262)
+2019-04-24T15:14:41.8059328+07:00 0HLM8HJA6QCMF:00000006 [INF] Executing ObjectResult, writing value of type '"OSM.Utilities.Dtos.PagedResult`1[[OSM.Application.ViewModels.Product.ProductViewModel, OSM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-24T15:14:41.8087237+07:00 0HLM8HJA6QCMF:00000006 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetAllPaging (OSM)" in 139.6061ms (afa2e885)
+2019-04-24T15:14:41.8126847+07:00 0HLM8HJA6QCMF:00000006 [INF] Request finished in 147.8348ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:43.3245252+07:00 0HLM8HJA6QCMI:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetQuantities?productId=20   (ca22a1cb)
+2019-04-24T15:14:43.3296333+07:00 0HLM8HJA6QCMI:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetQuantities\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetQuantities (OSM)" (a44c0341)
+2019-04-24T15:14:43.3331686+07:00 0HLM8HJA6QCMI:00000002 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:43.3660303+07:00 0HLM8HJA6QCMI:00000002 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetQuantities (OSM)" with arguments (["20"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:43.3706019+07:00 0HLM8HJA6QCMI:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:43.4225495+07:00 0HLM8HJA6QCMI:00000002 [INF] Executed DbCommand ("41"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[ProductId], [x].[SizeId], [x].[ColorId], [x].[Quantity]
+FROM [ProductQuantities] AS [x]
+WHERE [x].[ProductId] = @__productId_0" (0723d8ff)
+2019-04-24T15:14:43.4272541+07:00 0HLM8HJA6QCMI:00000002 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetQuantities (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 58.9757ms. (50a9e262)
+2019-04-24T15:14:43.4312312+07:00 0HLM8HJA6QCMI:00000002 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[OSM.Application.ViewModels.Product.ProductQuantityViewModel, OSM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-24T15:14:43.4364335+07:00 0HLM8HJA6QCMI:00000002 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetQuantities (OSM)" in 104.8444ms (afa2e885)
+2019-04-24T15:14:43.4397105+07:00 0HLM8HJA6QCMI:00000002 [INF] Request finished in 114.7589ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:50.8906103+07:00 0HLM8HJA6QCMH:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/AddColor application/x-www-form-urlencoded; charset=UTF-8 6 (ca22a1cb)
+2019-04-24T15:14:50.8928534+07:00 0HLM8HJA6QCMF:00000007 [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/AddSize application/x-www-form-urlencoded; charset=UTF-8 6 (ca22a1cb)
+2019-04-24T15:14:50.8939434+07:00 0HLM8HJA6QCMI:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetSize?Name=w   (ca22a1cb)
+2019-04-24T15:14:50.9183164+07:00 0HLM8HJA6QCMI:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetSize\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" (a44c0341)
+2019-04-24T15:14:50.9205514+07:00 0HLM8HJA6QCMI:00000003 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:50.9236173+07:00 0HLM8HJA6QCMF:00000007 [INF] Route matched with "{area = \"Admin\", action = \"AddSize\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" (a44c0341)
+2019-04-24T15:14:50.9539236+07:00 0HLM8HJA6QCMH:00000002 [INF] Route matched with "{area = \"Admin\", action = \"AddColor\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" (a44c0341)
+2019-04-24T15:14:50.9556864+07:00 0HLM8HJA6QCMI:00000003 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" with arguments (["w"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:50.9569114+07:00 0HLM8HJA6QCMF:00000007 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:50.9588299+07:00 0HLM8HJA6QCMH:00000002 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:50.9627872+07:00 0HLM8HJA6QCMI:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:51.0394453+07:00 0HLM8HJA6QCMI:00000003 [INF] Executed DbCommand ("65"ms) [Parameters=["@__name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Name] = @__name_0" (0723d8ff)
+2019-04-24T15:14:51.0974180+07:00 0HLM8HJA6QCMF:00000007 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" with arguments (["OSM.Application.ViewModels.Common.SizeViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:51.0987973+07:00 0HLM8HJA6QCMH:00000002 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" with arguments (["OSM.Application.ViewModels.Common.ColorViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:51.1038217+07:00 0HLM8HJA6QCMF:00000007 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:51.1048569+07:00 0HLM8HJA6QCMH:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:51.1719503+07:00 0HLM8HJA6QCMH:00000002 [INF] Executed DbCommand ("55"ms) [Parameters=["@__color_Name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Name] = @__color_Name_0" (0723d8ff)
+2019-04-24T15:14:51.1729839+07:00 0HLM8HJA6QCMF:00000007 [INF] Executed DbCommand ("57"ms) [Parameters=["@__size_Name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Name] = @__size_Name_0" (0723d8ff)
+2019-04-24T15:14:51.1763983+07:00 0HLM8HJA6QCMI:00000003 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 218.78ms. (50a9e262)
+2019-04-24T15:14:51.1793208+07:00 0HLM8HJA6QCMI:00000003 [INF] Executing ObjectResult, writing value of type '"null"'. (8a1b66c8)
+2019-04-24T15:14:51.1814756+07:00 0HLM8HJA6QCMI:00000003 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" in 261.1117ms (afa2e885)
+2019-04-24T15:14:51.1855940+07:00 0HLM8HJA6QCMI:00000003 [INF] Request finished in 292.1481ms 204  (791a596a)
+2019-04-24T15:14:51.1947211+07:00 0HLM8HJA6QCMI:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetColor?Name=e   (ca22a1cb)
+2019-04-24T15:14:51.2002697+07:00 0HLM8HJA6QCMI:00000004 [INF] Route matched with "{area = \"Admin\", action = \"GetColor\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" (a44c0341)
+2019-04-24T15:14:51.2023255+07:00 0HLM8HJA6QCMI:00000004 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:51.2285196+07:00 0HLM8HJA6QCMI:00000004 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" with arguments (["e"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:51.2351950+07:00 0HLM8HJA6QCMI:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:51.2741956+07:00 0HLM8HJA6QCMI:00000004 [INF] Executed DbCommand ("32"ms) [Parameters=["@__name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Name] = @__name_0" (0723d8ff)
+2019-04-24T15:14:51.2828773+07:00 0HLM8HJA6QCMI:00000004 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 50.0893ms. (50a9e262)
+2019-04-24T15:14:51.2839036+07:00 0HLM8HJA6QCMH:00000002 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 181.5439ms. (50a9e262)
+2019-04-24T15:14:51.2886865+07:00 0HLM8HJA6QCMI:00000004 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.ColorViewModel"'. (8a1b66c8)
+2019-04-24T15:14:51.2896371+07:00 0HLM8HJA6QCMH:00000002 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.ColorViewModel"'. (8a1b66c8)
+2019-04-24T15:14:51.2940749+07:00 0HLM8HJA6QCMH:00000002 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" in 336.9723ms (afa2e885)
+2019-04-24T15:14:51.2968397+07:00 0HLM8HJA6QCMI:00000004 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" in 91.7783ms (afa2e885)
+2019-04-24T15:14:51.3024557+07:00 0HLM8HJA6QCMH:00000002 [INF] Request finished in 412.5185ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:51.3047739+07:00 0HLM8HJA6QCMI:00000004 [INF] Request finished in 105.7855ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:51.3699904+07:00 0HLM8HJA6QCMF:00000007 [INF] Executed DbCommand ("36"ms) [Parameters=["@p0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Sizes] ([Name])
+VALUES (@p0);
+SELECT [Id]
+FROM [Sizes]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2019-04-24T15:14:51.3800521+07:00 0HLM8HJA6QCMF:00000007 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 280.8457ms. (50a9e262)
+2019-04-24T15:14:51.3817187+07:00 0HLM8HJA6QCMF:00000007 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.SizeViewModel"'. (8a1b66c8)
+2019-04-24T15:14:51.3852772+07:00 0HLM8HJA6QCMF:00000007 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" in 459.4867ms (afa2e885)
+2019-04-24T15:14:51.3876690+07:00 0HLM8HJA6QCMF:00000007 [INF] Request finished in 497.2985ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:54.1746791+07:00 0HLM8HJA6QCMI:00000005 [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/AddColor application/x-www-form-urlencoded; charset=UTF-8 6 (ca22a1cb)
+2019-04-24T15:14:54.1756393+07:00 0HLM8HJA6QCMF:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetSize?Name=w   (ca22a1cb)
+2019-04-24T15:14:54.1782208+07:00 0HLM8HJA6QCMH:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/AddSize application/x-www-form-urlencoded; charset=UTF-8 6 (ca22a1cb)
+2019-04-24T15:14:54.1813225+07:00 0HLM8HJA6QCMI:00000005 [INF] Route matched with "{area = \"Admin\", action = \"AddColor\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" (a44c0341)
+2019-04-24T15:14:54.1832824+07:00 0HLM8HJA6QCMF:00000008 [INF] Route matched with "{area = \"Admin\", action = \"GetSize\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" (a44c0341)
+2019-04-24T15:14:54.1842818+07:00 0HLM8HJA6QCMI:00000005 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:54.1861708+07:00 0HLM8HJA6QCMF:00000008 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:54.1883231+07:00 0HLM8HJA6QCMH:00000003 [INF] Route matched with "{area = \"Admin\", action = \"AddSize\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" (a44c0341)
+2019-04-24T15:14:54.2154462+07:00 0HLM8HJA6QCMH:00000003 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:54.2172867+07:00 0HLM8HJA6QCMF:00000008 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" with arguments (["w"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:54.2642660+07:00 0HLM8HJA6QCMI:00000005 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" with arguments (["OSM.Application.ViewModels.Common.ColorViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:54.2661374+07:00 0HLM8HJA6QCMH:00000003 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" with arguments (["OSM.Application.ViewModels.Common.SizeViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:54.2680852+07:00 0HLM8HJA6QCMF:00000008 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:54.2704632+07:00 0HLM8HJA6QCMH:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:54.2715957+07:00 0HLM8HJA6QCMI:00000005 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:54.3301763+07:00 0HLM8HJA6QCMH:00000003 [INF] Executed DbCommand ("55"ms) [Parameters=["@__size_Name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Name] = @__size_Name_0" (0723d8ff)
+2019-04-24T15:14:54.3327659+07:00 0HLM8HJA6QCMF:00000008 [INF] Executed DbCommand ("58"ms) [Parameters=["@__name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Name] = @__name_0" (0723d8ff)
+2019-04-24T15:14:54.3338014+07:00 0HLM8HJA6QCMH:00000003 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 65.1861ms. (50a9e262)
+2019-04-24T15:14:54.3359505+07:00 0HLM8HJA6QCMH:00000003 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.SizeViewModel"'. (8a1b66c8)
+2019-04-24T15:14:54.3400214+07:00 0HLM8HJA6QCMF:00000008 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 118.7524ms. (50a9e262)
+2019-04-24T15:14:54.3805636+07:00 0HLM8HJA6QCMH:00000003 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" in 148.6179ms (afa2e885)
+2019-04-24T15:14:54.3832543+07:00 0HLM8HJA6QCMF:00000008 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.SizeViewModel"'. (8a1b66c8)
+2019-04-24T15:14:54.3868033+07:00 0HLM8HJA6QCMI:00000005 [INF] Executed DbCommand ("36"ms) [Parameters=["@__color_Name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Name] = @__color_Name_0" (0723d8ff)
+2019-04-24T15:14:54.3893183+07:00 0HLM8HJA6QCMF:00000008 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" in 200.2062ms (afa2e885)
+2019-04-24T15:14:54.3978445+07:00 0HLM8HJA6QCMI:00000005 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 122.7684ms. (50a9e262)
+2019-04-24T15:14:54.4027443+07:00 0HLM8HJA6QCMF:00000008 [INF] Request finished in 218.1846ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:54.4047304+07:00 0HLM8HJA6QCMI:00000005 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.ColorViewModel"'. (8a1b66c8)
+2019-04-24T15:14:54.4074851+07:00 0HLM8HJA6QCMH:00000003 [INF] Request finished in 210.3005ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:54.4114120+07:00 0HLM8HJA6QCMI:00000005 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" in 223.5543ms (afa2e885)
+2019-04-24T15:14:54.4166443+07:00 0HLM8HJA6QCMH:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetColor?Name=e   (ca22a1cb)
+2019-04-24T15:14:54.4180637+07:00 0HLM8HJA6QCMI:00000005 [INF] Request finished in 241.1365ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:54.4218418+07:00 0HLM8HJA6QCMH:00000004 [INF] Route matched with "{area = \"Admin\", action = \"GetColor\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" (a44c0341)
+2019-04-24T15:14:54.4251926+07:00 0HLM8HJA6QCMH:00000004 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:54.4539356+07:00 0HLM8HJA6QCMH:00000004 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" with arguments (["e"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:14:54.4564240+07:00 0HLM8HJA6QCMH:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:14:54.4897916+07:00 0HLM8HJA6QCMH:00000004 [INF] Executed DbCommand ("31"ms) [Parameters=["@__name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Name] = @__name_0" (0723d8ff)
+2019-04-24T15:14:54.4917688+07:00 0HLM8HJA6QCMH:00000004 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 36.1212ms. (50a9e262)
+2019-04-24T15:14:54.4935929+07:00 0HLM8HJA6QCMH:00000004 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.ColorViewModel"'. (8a1b66c8)
+2019-04-24T15:14:54.4958214+07:00 0HLM8HJA6QCMH:00000004 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" in 71.9444ms (afa2e885)
+2019-04-24T15:14:54.5033229+07:00 0HLM8HJA6QCMH:00000004 [INF] Request finished in 87.3025ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:14:54.5054830+07:00 0HLM8HJA6QCMF:00000009 [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/SaveQuantities application/x-www-form-urlencoded; charset=UTF-8 177 (ca22a1cb)
+2019-04-24T15:14:54.5141243+07:00 0HLM8HJA6QCMF:00000009 [INF] Route matched with "{area = \"Admin\", action = \"SaveQuantities\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.SaveQuantities (OSM)" (a44c0341)
+2019-04-24T15:14:54.5159795+07:00 0HLM8HJA6QCMF:00000009 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:14:54.5512996+07:00 0HLM8HJA6QCMF:00000009 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.SaveQuantities (OSM)" with arguments (["20", "System.Collections.Generic.List`1[OSM.Application.ViewModels.Product.ProductQuantityViewModel]"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:01.9885961+07:00 0HLM8HJA6QCMF:00000009 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:02.1661103+07:00 0HLM8HJA6QCMF:00000009 [INF] Executed DbCommand ("52"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[ColorId], [x].[ProductId], [x].[Quantity], [x].[SizeId]
+FROM [ProductQuantities] AS [x]
+WHERE [x].[ProductId] = @__productId_0" (0723d8ff)
+2019-04-24T15:15:02.4604923+07:00 0HLM8HJA6QCMF:00000009 [INF] Executed DbCommand ("221"ms) [Parameters=["@p0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DELETE FROM [ProductQuantities]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-24T15:15:02.5250615+07:00 0HLM8HJA6QCMF:00000009 [ERR] Failed executing DbCommand ("38"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [ProductQuantities] ([ColorId], [ProductId], [Quantity], [SizeId])
+VALUES (@p0, @p1, @p2, @p3);
+SELECT [Id]
+FROM [ProductQuantities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (627a98df)
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ProductQuantities_Colors_ColorId". The conflict occurred in database "OSM", table "dbo.Colors", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:1de36675-ad1d-4bde-84cb-9252e2d2abfa
+Error Number:547,State:0,Class:16
+2019-04-24T15:15:02.5412315+07:00 0HLM8HJA6QCMF:00000009 [ERR] An exception occurred in the database while saving changes for context type '"OSM.Data.EF.AppDbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_ProductQuantities_Colors_ColorId\". The conflict occurred in database \"OSM\", table \"dbo.Colors\", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ProductQuantities_Colors_ColorId". The conflict occurred in database "OSM", table "dbo.Colors", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at OSM.Data.EF.AppDbContext.SaveChanges() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Data.EF\AppDbContext.cs:line 110
+2019-04-24T15:15:04.8763596+07:00 0HLM8HJA6QCMF:00000009 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.SaveQuantities (OSM)" in 10359.1019ms (afa2e885)
+2019-04-24T15:15:05.1808246+07:00 0HLM8HJA6QCMF:00000009 [INF] Executed DbCommand ("95"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2019-04-24T15:15:05.2386005+07:00 0HLM8HJA6QCMF:00000009 [INF] Executed DbCommand ("47"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2019-04-24T15:15:05.2690081+07:00 0HLM8HJA6QCMF:00000009 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ProductQuantities_Colors_ColorId". The conflict occurred in database "OSM", table "dbo.Colors", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at OSM.Data.EF.AppDbContext.SaveChanges() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Data.EF\AppDbContext.cs:line 110
+   at OSM.Data.EF.EFUnitOfWork.Commit() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Data.EF\EFUnitOfWork.cs:line 16
+   at OSM.Application.Implementation.ProductService.Save() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Application\Implementation\ProductService.cs:line 248
+   at OSM.Areas.Admin.Controllers.ProductController.SaveQuantities(Int32 productId, List`1 quantities) in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM\Areas\Admin\Controllers\ProductController.cs:line 168
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebMarkupMin.AspNetCore2.WebMarkupMinMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at OSM.Extensions.ImageResizerMiddleware.Invoke(HttpContext context) in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM\Extensions\ImageResizerMiddleware.cs:line 70
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-04-24T15:15:05.2972406+07:00 0HLM8HJA6QCMF:00000009 [INF] Request finished in 10786.748ms 500 text/html; charset=utf-8 (791a596a)
+2019-04-24T15:15:10.3216762+07:00 0HLM8HJA6QCMI:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetQuantities?productId=20   (ca22a1cb)
+2019-04-24T15:15:10.3251109+07:00 0HLM8HJA6QCMI:00000006 [INF] Route matched with "{area = \"Admin\", action = \"GetQuantities\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetQuantities (OSM)" (a44c0341)
+2019-04-24T15:15:10.3287989+07:00 0HLM8HJA6QCMI:00000006 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:10.3564327+07:00 0HLM8HJA6QCMI:00000006 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetQuantities (OSM)" with arguments (["20"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:10.3586953+07:00 0HLM8HJA6QCMI:00000006 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:10.3922483+07:00 0HLM8HJA6QCMI:00000006 [INF] Executed DbCommand ("30"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[ProductId], [x].[SizeId], [x].[ColorId], [x].[Quantity]
+FROM [ProductQuantities] AS [x]
+WHERE [x].[ProductId] = @__productId_0" (0723d8ff)
+2019-04-24T15:15:10.3945422+07:00 0HLM8HJA6QCMI:00000006 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetQuantities (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 36.0176ms. (50a9e262)
+2019-04-24T15:15:10.3988660+07:00 0HLM8HJA6QCMI:00000006 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[OSM.Application.ViewModels.Product.ProductQuantityViewModel, OSM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-04-24T15:15:10.4011173+07:00 0HLM8HJA6QCMI:00000006 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetQuantities (OSM)" in 73.9939ms (afa2e885)
+2019-04-24T15:15:10.4043556+07:00 0HLM8HJA6QCMI:00000006 [INF] Request finished in 82.1873ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:19.6305048+07:00 0HLM8HJA6QCMH:00000005 [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/AddColor application/x-www-form-urlencoded; charset=UTF-8 5 (ca22a1cb)
+2019-04-24T15:15:19.6306073+07:00 0HLM8HJA6QCMF:0000000A [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/AddSize application/x-www-form-urlencoded; charset=UTF-8 5 (ca22a1cb)
+2019-04-24T15:15:19.6435848+07:00 0HLM8HJA6QCMH:00000005 [INF] Route matched with "{area = \"Admin\", action = \"AddColor\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" (a44c0341)
+2019-04-24T15:15:19.6455272+07:00 0HLM8HJA6QCMF:0000000A [INF] Route matched with "{area = \"Admin\", action = \"AddSize\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" (a44c0341)
+2019-04-24T15:15:19.6467348+07:00 0HLM8HJA6QCMH:00000005 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:19.6485638+07:00 0HLM8HJA6QCMF:0000000A [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:19.6504709+07:00 0HLM8HJA6QCMI:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetSize?Name=   (ca22a1cb)
+2019-04-24T15:15:19.6988606+07:00 0HLM8HJA6QCMF:0000000A [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" with arguments (["OSM.Application.ViewModels.Common.SizeViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:19.7005648+07:00 0HLM8HJA6QCMI:00000007 [INF] Route matched with "{area = \"Admin\", action = \"GetSize\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" (a44c0341)
+2019-04-24T15:15:19.7023102+07:00 0HLM8HJA6QCMH:00000005 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" with arguments (["OSM.Application.ViewModels.Common.ColorViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:19.7036226+07:00 0HLM8HJA6QCMF:0000000A [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:19.7060757+07:00 0HLM8HJA6QCMI:00000007 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:19.7317087+07:00 0HLM8HJA6QCMH:00000005 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:19.7609833+07:00 0HLM8HJA6QCMI:00000007 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" with arguments ([""]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:19.7928824+07:00 0HLM8HJA6QCMI:00000007 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:19.7936979+07:00 0HLM8HJA6QCMF:0000000A [INF] Executed DbCommand ("55"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Name] IS NULL" (0723d8ff)
+2019-04-24T15:15:19.7977787+07:00 0HLM8HJA6QCMF:0000000A [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 94.7293ms. (50a9e262)
+2019-04-24T15:15:19.8258094+07:00 0HLM8HJA6QCMH:00000005 [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Name] IS NULL" (0723d8ff)
+2019-04-24T15:15:19.8277476+07:00 0HLM8HJA6QCMF:0000000A [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.SizeViewModel"'. (8a1b66c8)
+2019-04-24T15:15:19.8317122+07:00 0HLM8HJA6QCMI:00000007 [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Name] IS NULL" (0723d8ff)
+2019-04-24T15:15:19.8335956+07:00 0HLM8HJA6QCMH:00000005 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 125.5467ms. (50a9e262)
+2019-04-24T15:15:19.8356514+07:00 0HLM8HJA6QCMI:00000007 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 70.917ms. (50a9e262)
+2019-04-24T15:15:19.8373806+07:00 0HLM8HJA6QCMH:00000005 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.ColorViewModel"'. (8a1b66c8)
+2019-04-24T15:15:19.8392210+07:00 0HLM8HJA6QCMF:0000000A [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" in 182.5086ms (afa2e885)
+2019-04-24T15:15:19.8401326+07:00 0HLM8HJA6QCMI:00000007 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.SizeViewModel"'. (8a1b66c8)
+2019-04-24T15:15:19.8431939+07:00 0HLM8HJA6QCMH:00000005 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" in 195.6487ms (afa2e885)
+2019-04-24T15:15:19.8460998+07:00 0HLM8HJA6QCMF:0000000A [INF] Request finished in 211.2457ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:19.8487538+07:00 0HLM8HJA6QCMH:00000005 [INF] Request finished in 217.5782ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:19.8496227+07:00 0HLM8HJA6QCMI:00000007 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" in 140.7917ms (afa2e885)
+2019-04-24T15:15:19.8530534+07:00 0HLM8HJA6QCMI:00000007 [INF] Request finished in 204.1754ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:19.8628000+07:00 0HLM8HJA6QCMF:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetColor?Name=   (ca22a1cb)
+2019-04-24T15:15:19.8657565+07:00 0HLM8HJA6QCMF:0000000B [INF] Route matched with "{area = \"Admin\", action = \"GetColor\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" (a44c0341)
+2019-04-24T15:15:19.8677905+07:00 0HLM8HJA6QCMF:0000000B [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:19.8958564+07:00 0HLM8HJA6QCMF:0000000B [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" with arguments ([""]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:19.8983527+07:00 0HLM8HJA6QCMF:0000000B [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:19.9280757+07:00 0HLM8HJA6QCMF:0000000B [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Name] IS NULL" (0723d8ff)
+2019-04-24T15:15:19.9303907+07:00 0HLM8HJA6QCMF:0000000B [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 32.5638ms. (50a9e262)
+2019-04-24T15:15:19.9322983+07:00 0HLM8HJA6QCMF:0000000B [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.ColorViewModel"'. (8a1b66c8)
+2019-04-24T15:15:19.9342633+07:00 0HLM8HJA6QCMF:0000000B [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" in 66.8086ms (afa2e885)
+2019-04-24T15:15:19.9364585+07:00 0HLM8HJA6QCMF:0000000B [INF] Request finished in 73.5889ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:19.9454385+07:00 0HLM8HJA6QCMH:00000006 [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/AddColor application/x-www-form-urlencoded; charset=UTF-8 6 (ca22a1cb)
+2019-04-24T15:15:19.9476041+07:00 0HLM8HJA6QCMI:00000008 [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/AddSize application/x-www-form-urlencoded; charset=UTF-8 6 (ca22a1cb)
+2019-04-24T15:15:19.9484240+07:00 0HLM8HJA6QCMF:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetSize?Name=3   (ca22a1cb)
+2019-04-24T15:15:19.9506505+07:00 0HLM8HJA6QCMH:00000006 [INF] Route matched with "{area = \"Admin\", action = \"AddColor\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" (a44c0341)
+2019-04-24T15:15:19.9533750+07:00 0HLM8HJA6QCMI:00000008 [INF] Route matched with "{area = \"Admin\", action = \"AddSize\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" (a44c0341)
+2019-04-24T15:15:19.9552574+07:00 0HLM8HJA6QCMH:00000006 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:19.9560718+07:00 0HLM8HJA6QCMI:00000008 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:19.9585354+07:00 0HLM8HJA6QCMF:0000000C [INF] Route matched with "{area = \"Admin\", action = \"GetSize\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" (a44c0341)
+2019-04-24T15:15:19.9614721+07:00 0HLM8HJA6QCMF:0000000C [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:20.0027761+07:00 0HLM8HJA6QCMI:00000008 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" with arguments (["OSM.Application.ViewModels.Common.SizeViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:20.0270142+07:00 0HLM8HJA6QCMH:00000006 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" with arguments (["OSM.Application.ViewModels.Common.ColorViewModel"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:20.0312937+07:00 0HLM8HJA6QCMI:00000008 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:20.0345001+07:00 0HLM8HJA6QCMH:00000006 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:20.1085736+07:00 0HLM8HJA6QCMF:0000000C [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" with arguments (["3"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:20.1397205+07:00 0HLM8HJA6QCMI:00000008 [INF] Executed DbCommand ("75"ms) [Parameters=["@__size_Name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Name] = @__size_Name_0" (0723d8ff)
+2019-04-24T15:15:20.1429323+07:00 0HLM8HJA6QCMF:0000000C [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:20.1447346+07:00 0HLM8HJA6QCMI:00000008 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 138.2522ms. (50a9e262)
+2019-04-24T15:15:20.1467498+07:00 0HLM8HJA6QCMH:00000006 [INF] Executed DbCommand ("33"ms) [Parameters=["@__color_Name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Name] = @__color_Name_0" (0723d8ff)
+2019-04-24T15:15:20.1490090+07:00 0HLM8HJA6QCMI:00000008 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.SizeViewModel"'. (8a1b66c8)
+2019-04-24T15:15:20.1796804+07:00 0HLM8HJA6QCMI:00000008 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.AddSize (OSM)" in 223.693ms (afa2e885)
+2019-04-24T15:15:20.1857193+07:00 0HLM8HJA6QCMI:00000008 [INF] Request finished in 235.7003ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:20.1896318+07:00 0HLM8HJA6QCMF:0000000C [INF] Executed DbCommand ("34"ms) [Parameters=["@__name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Name] = @__name_0" (0723d8ff)
+2019-04-24T15:15:20.1928834+07:00 0HLM8HJA6QCMF:0000000C [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 81.2275ms. (50a9e262)
+2019-04-24T15:15:20.2226441+07:00 0HLM8HJA6QCMF:0000000C [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.SizeViewModel"'. (8a1b66c8)
+2019-04-24T15:15:20.2258178+07:00 0HLM8HJA6QCMF:0000000C [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetSize (OSM)" in 264.2089ms (afa2e885)
+2019-04-24T15:15:20.2347740+07:00 0HLM8HJA6QCMH:00000006 [INF] Executed DbCommand ("34"ms) [Parameters=["@p0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Colors] ([Name])
+VALUES (@p0);
+SELECT [Id]
+FROM [Colors]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2019-04-24T15:15:20.2360985+07:00 0HLM8HJA6QCMF:0000000C [INF] Request finished in 281.6019ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:20.2406494+07:00 0HLM8HJA6QCMI:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44335/admin/Product/GetColor?Name=4   (ca22a1cb)
+2019-04-24T15:15:20.2431417+07:00 0HLM8HJA6QCMH:00000006 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 212.1374ms. (50a9e262)
+2019-04-24T15:15:20.2453958+07:00 0HLM8HJA6QCMI:00000009 [INF] Route matched with "{area = \"Admin\", action = \"GetColor\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" (a44c0341)
+2019-04-24T15:15:20.2482298+07:00 0HLM8HJA6QCMH:00000006 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.ColorViewModel"'. (8a1b66c8)
+2019-04-24T15:15:20.2504388+07:00 0HLM8HJA6QCMI:00000009 [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:20.2523959+07:00 0HLM8HJA6QCMH:00000006 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.AddColor (OSM)" in 296.6324ms (afa2e885)
+2019-04-24T15:15:20.2561540+07:00 0HLM8HJA6QCMH:00000006 [INF] Request finished in 310.7153ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:20.2812789+07:00 0HLM8HJA6QCMI:00000009 [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" with arguments (["4"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:20.2833305+07:00 0HLM8HJA6QCMI:00000009 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:20.3145019+07:00 0HLM8HJA6QCMI:00000009 [INF] Executed DbCommand ("29"ms) [Parameters=["@__name_0='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Name] = @__name_0" (0723d8ff)
+2019-04-24T15:15:20.3166876+07:00 0HLM8HJA6QCMI:00000009 [INF] Executed action method "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 33.6281ms. (50a9e262)
+2019-04-24T15:15:20.3186608+07:00 0HLM8HJA6QCMI:00000009 [INF] Executing ObjectResult, writing value of type '"OSM.Application.ViewModels.Common.ColorViewModel"'. (8a1b66c8)
+2019-04-24T15:15:20.3206425+07:00 0HLM8HJA6QCMI:00000009 [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.GetColor (OSM)" in 73.4309ms (afa2e885)
+2019-04-24T15:15:20.3232324+07:00 0HLM8HJA6QCMI:00000009 [INF] Request finished in 84.5629ms 200 application/json; charset=utf-8 (791a596a)
+2019-04-24T15:15:20.3302195+07:00 0HLM8HJA6QCMF:0000000D [INF] Request starting HTTP/1.1 POST http://localhost:44335/admin/Product/SaveQuantities application/x-www-form-urlencoded; charset=UTF-8 344 (ca22a1cb)
+2019-04-24T15:15:20.3338776+07:00 0HLM8HJA6QCMF:0000000D [INF] Route matched with "{area = \"Admin\", action = \"SaveQuantities\", controller = \"Product\"}". Executing action "OSM.Areas.Admin.Controllers.ProductController.SaveQuantities (OSM)" (a44c0341)
+2019-04-24T15:15:20.3358186+07:00 0HLM8HJA6QCMF:0000000D [INF] Authorization was successful. (0d575a54)
+2019-04-24T15:15:20.3623957+07:00 0HLM8HJA6QCMF:0000000D [INF] Executing action method "OSM.Areas.Admin.Controllers.ProductController.SaveQuantities (OSM)" with arguments (["20", "System.Collections.Generic.List`1[OSM.Application.ViewModels.Product.ProductQuantityViewModel]"]) - Validation state: Valid (4e3479ed)
+2019-04-24T15:15:32.1985453+07:00 0HLM8HJA6QCMF:0000000D [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=OSM.Data.EF " (9958f5bb)
+2019-04-24T15:15:32.2281667+07:00 0HLM8HJA6QCMF:0000000D [INF] Executed DbCommand ("27"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[ColorId], [x].[ProductId], [x].[Quantity], [x].[SizeId]
+FROM [ProductQuantities] AS [x]
+WHERE [x].[ProductId] = @__productId_0" (0723d8ff)
+2019-04-24T15:15:34.1159341+07:00 0HLM8HJA6QCMF:0000000D [INF] Executed DbCommand ("30"ms) [Parameters=["@p0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DELETE FROM [ProductQuantities]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2019-04-24T15:15:34.1490862+07:00 0HLM8HJA6QCMF:0000000D [ERR] Failed executing DbCommand ("30"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [ProductQuantities] ([ColorId], [ProductId], [Quantity], [SizeId])
+VALUES (@p0, @p1, @p2, @p3);
+SELECT [Id]
+FROM [ProductQuantities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (627a98df)
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ProductQuantities_Colors_ColorId". The conflict occurred in database "OSM", table "dbo.Colors", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:119af41e-1b0f-4b6a-807e-95c405c7e6d0
+Error Number:547,State:0,Class:16
+2019-04-24T15:15:34.1570976+07:00 0HLM8HJA6QCMF:0000000D [ERR] An exception occurred in the database while saving changes for context type '"OSM.Data.EF.AppDbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_ProductQuantities_Colors_ColorId\". The conflict occurred in database \"OSM\", table \"dbo.Colors\", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ProductQuantities_Colors_ColorId". The conflict occurred in database "OSM", table "dbo.Colors", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at OSM.Data.EF.AppDbContext.SaveChanges() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Data.EF\AppDbContext.cs:line 110
+   at OSM.Data.EF.EFUnitOfWork.Commit() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Data.EF\EFUnitOfWork.cs:line 16
+   at OSM.Application.Implementation.ProductService.Save() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Application\Implementation\ProductService.cs:line 248
+   at OSM.Areas.Admin.Controllers.ProductController.SaveQuantities(Int32 productId, List`1 quantities) in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM\Areas\Admin\Controllers\ProductController.cs:line 168
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+2019-04-24T15:15:40.8183932+07:00 0HLM8HJA6QCMF:0000000D [INF] Executed action "OSM.Areas.Admin.Controllers.ProductController.SaveQuantities (OSM)" in 20482.1948ms (afa2e885)
+2019-04-24T15:16:14.6774661+07:00 0HLM8HJA6QCMF:0000000D [INF] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2019-04-24T15:16:14.6981878+07:00 0HLM8HJA6QCMF:0000000D [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2019-04-24T15:16:14.7062206+07:00 0HLM8HJA6QCMF:0000000D [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ProductQuantities_Colors_ColorId". The conflict occurred in database "OSM", table "dbo.Colors", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at OSM.Data.EF.AppDbContext.SaveChanges() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Data.EF\AppDbContext.cs:line 110
+   at OSM.Data.EF.EFUnitOfWork.Commit() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Data.EF\EFUnitOfWork.cs:line 16
+   at OSM.Application.Implementation.ProductService.Save() in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM.Application\Implementation\ProductService.cs:line 248
+   at OSM.Areas.Admin.Controllers.ProductController.SaveQuantities(Int32 productId, List`1 quantities) in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM\Areas\Admin\Controllers\ProductController.cs:line 168
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at WebMarkupMin.AspNetCore2.WebMarkupMinMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at OSM.Extensions.ImageResizerMiddleware.Invoke(HttpContext context) in C:\Users\ASUS\Desktop\Final Project\osm-core\OSM\Extensions\ImageResizerMiddleware.cs:line 70
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-04-24T15:16:14.7428565+07:00 0HLM8HJA6QCMF:0000000D [INF] Request finished in 54396.8588ms 500 text/html; charset=utf-8 (791a596a)

@@ -12,5 +12,6 @@ namespace OSM.Data.Entities
         {
             get; set;
         }
+
     }
 }

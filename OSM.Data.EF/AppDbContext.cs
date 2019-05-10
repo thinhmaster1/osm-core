@@ -11,6 +11,7 @@ using OSM.Data.Interfaces;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace OSM.Data.EF
 {
@@ -93,7 +94,7 @@ namespace OSM.Data.EF
         public override int SaveChanges()
         {
             var modified = ChangeTracker.Entries().Where(e => e.State == EntityState.Modified || e.State == EntityState.Added);
-
+            
             foreach (EntityEntry item in modified)
             {
                 var changedOrAddedItem = item.Entity as IDateTracking;
@@ -108,6 +109,7 @@ namespace OSM.Data.EF
             }
             return base.SaveChanges();
         }
+
     }
 
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>

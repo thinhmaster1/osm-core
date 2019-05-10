@@ -9,7 +9,7 @@ namespace OSM.Views.Manage
         public static string ActivePageKey => "ActivePage";
 
         public static string Index => "Index";
-
+        public static string Order => "Order";
         public static string ChangePassword => "ChangePassword";
 
         public static string ExternalLogins => "ExternalLogins";
@@ -17,6 +17,8 @@ namespace OSM.Views.Manage
         public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
+
+        public static string OrderNavClass(ViewContext viewContext) => PageNavClass(viewContext, Order);
 
         public static string ChangePasswordNavClass(ViewContext viewContext) => PageNavClass(viewContext, ChangePassword);
 

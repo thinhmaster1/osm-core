@@ -12,8 +12,5 @@ namespace OSM.Data.Entities
         {
             get; set;
         }
-
-        [StringLength(250)]
-        public string Code { get; set; }
     }
 }

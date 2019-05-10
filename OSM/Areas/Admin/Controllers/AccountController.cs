@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace OSM.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly SignInManager<AppUser> _signInManager;
 

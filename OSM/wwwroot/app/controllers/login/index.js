@@ -1,4 +1,4 @@
-﻿var loginController = function(){
+﻿var loginController = function () {
     this.initialize = function () {
         registerEvents();
     }
@@ -31,20 +31,19 @@
         $.ajax({
             type: 'POST',
             data: {
-                UserName: user,
+                Email: user,
                 Password: pass
             },
-            dateType: 'json',
+            dataType: 'json',
             url: '/admin/login/authen',
             success: function (res) {
                 if (res.Success) {
                     window.location.href = "/Admin/Home/Index";
                 }
                 else {
-                    osm.notify('Đăng nhập không đúng', 'error');
+                    osm.notify('Your username or password is wrong!', 'error');
                 }
             }
         })
     }
-  
 }

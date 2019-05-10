@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace OSM.Helpers
 {
+
     public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory<AppUser, AppRole>
     {
         UserManager<AppUser> _userManger;
@@ -26,10 +27,14 @@ namespace OSM.Helpers
             var roles = await _userManger.GetRolesAsync(user);
             ((ClaimsIdentity)principal.Identity).AddClaims(new[]
             {
+                new Claim(ClaimTypes.NameIdentifier,user.UserName),
                 new Claim("Email",user.Email),
                 new Claim("FullName",user.FullName),
                 new Claim("Avatar",user.Avatar??string.Empty),
-                new Claim("Roles",string.Join(";",roles))
+                new Claim("Roles",string.Join(";",roles)),
+                new Claim("UserId",user.Id.ToString()),
+                new Claim("Phone", user.PhoneNumber??string.Empty),
+                new Claim("Address", user.Address??string.Empty)
             });
             return principal;
         }

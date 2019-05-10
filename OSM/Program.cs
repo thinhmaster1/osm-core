@@ -11,13 +11,12 @@ namespace OSM
     {
         public static void Main(string[] args)
         {
-            var host = BuildWebHost(args);
+            var host = CreateWebHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
 
                 try
-
                 {
                     var dbInitializer = services.GetService<DbInitializer>();
                     dbInitializer.Seed().Wait();
@@ -31,9 +30,8 @@ namespace OSM
             host.Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
+                .UseStartup<Startup>();
     }
 }

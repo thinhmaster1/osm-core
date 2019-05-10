@@ -14,26 +14,50 @@ namespace OSM.Areas.Admin.Components
     public class SideBarViewComponent : ViewComponent
     {
         private IFunctionService _functionService;
+        private IRoleService _roleService;
 
-        public SideBarViewComponent(IFunctionService functionService)
+        public SideBarViewComponent(IFunctionService functionService, IRoleService roleService)
         {
             _functionService = functionService;
+            _roleService = roleService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var roles = ((ClaimsPrincipal)User).GetSpecificClaim("Roles");
+            var stringRoles = ((ClaimsPrincipal)User).GetSpecificClaim("Roles");
             List<FunctionViewModel> functions;
-            if (roles.Split(";").Contains(CommonConstants.AdminRole))
+            if (stringRoles.Split(";").Contains(CommonConstants.AppRole.AdminRole))
             {
-                functions = await _functionService.GetAll();
+                functions = await _functionService.GetAll(string.Empty);
             }
             else
             {
                 //TODO: Get by permission
+                var roles = stringRoles.Split(";");
+
+                var roleId = _roleService.GetByName(roles[0]).Result;
+
+                var permissions = _roleService.GetListFunctionWithRole(roleId).Result;
+
                 functions = new List<FunctionViewModel>();
+
+                foreach (var permission in permissions)
+                {
+                    if(permission.CanRead == true)
+                    {
+                        functions.Add(_functionService.GetById(permission.FunctionId));
+                    }
+
+                }
             }
             return View(functions);
+        }
+
+        public static Guid ToGuid(int value)
+        {
+            byte[] bytes = new byte[16];
+            BitConverter.GetBytes(value).CopyTo(bytes, 0);
+            return new Guid(bytes);
         }
     }
 }

@@ -13,6 +13,16 @@ namespace OSM.Data.Entities
     {
         public Blog()
         {
+            Blogs = new List<Blog>();
+        }
+
+        public Blog(int id, string name, string content, Status status,string author)
+        {
+            Id = id;
+            Name = name;
+            Content = content;
+            Status = status;
+            Author = author;
         }
 
         public Blog(string name, string thumbnailImage,
@@ -90,5 +100,8 @@ namespace OSM.Data.Entities
 
         [MaxLength(256)]
         public string SeoDescription { set; get; }
+        public string Author { get; set; }
+
+        public virtual ICollection<Blog> Blogs { set; get; }
     }
 }

@@ -61,9 +61,12 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Picture</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Price</th>
+                            <th>OriginalPrice</th>
+                            <th>Promotion</th>
                             <th>CreatedDate</th>
                             <th>ModifiedDate</th>
                             <th>Status</th>
@@ -82,9 +85,9 @@
                                 <option value="50">50</option>
                             </select>
                             <span class="item-per-page">
-                                bản ghi/trang.
+                                records/page
                             </span>
-                            Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
+                            Total record(s): <strong id="lblTotalRecords"></strong>
                         </div>
                     </div>
                     <div class="col-sm-7">
@@ -106,9 +109,12 @@
             <a href="#" data-id="{{Id}}" class="btn btn-xs btn-quantity"><i class="fa fa-hourglass-start"></i></a>
             <a href="#" data-id="{{Id}}" class="btn btn-xs btn-whole-price"><i class="fa fa-money"></i></a>
         </th>
+        <td> <img src="{{Picture}}?w=60" /></td>
         <td>{{Name}}</td>
         <td>{{CategoryName}}</td>
         <td>{{Price}}</td>
+        <td>{{OriginalPrice}}</td>
+        <td>{{PromotionPrice}}</td>
         <td>{{CreatedDate}}</td>
         <td>{{{ModifiedDate}}}</td>
         <td>{{{Status}}}</td>

@@ -72,12 +72,13 @@ namespace OSM.Controllers
                     var session = HttpContext.Session.GetString(CommonConstants.CartSession);
                     if (session == null)
                     {
-                        HttpContext.Session.SetString(CommonConstants.CartSession, user.Cart);
+                        if(user.Cart != null)
+                        {
+                            HttpContext.Session.SetString(CommonConstants.CartSession, user.Cart);
+                        }
+                        
                     }
-                    else
-                    {
-                        //todo
-                    }
+
                         _logger.LogInformation("User logged in.");
                     if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);

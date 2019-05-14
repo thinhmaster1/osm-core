@@ -29,7 +29,8 @@ namespace OSM.Controllers
         {
             ViewData["BodyClass"] = "cms-index-index cms-home-page";
             var homeVm = new HomeViewModel();
-            homeVm.HomeCategories = _productCategoryService.GetHomeCategories(5);
+            homeVm.HomeCategories = _productCategoryService.GetHomeCategories(4);
+            homeVm.SpecialOffers = _productService.GetUpsellProducts(10);
             homeVm.HotProducts = _productService.GetHotProduct(10);
             homeVm.LastestProducts = _productService.GetLastest(10);
             homeVm.LastestBlogs = _blogService.GetLastest(10);

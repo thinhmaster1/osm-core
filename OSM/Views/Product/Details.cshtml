@@ -5,6 +5,7 @@
     ViewData["MetaDescription"] = Model.Product.SeoDescription;
     var category = Model.Category;
     var product = Model.Product;
+    var productUrl = "/" + product.SeoAlias + "-p." + product.Id + ".html";
 }
 <!-- Breadcrumbs -->
 @section Scripts{
@@ -35,7 +36,17 @@
             <div class="col-main">
                 <div class="product-view-area">
                     <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
-                        <div class="icon-sale-label sale-left">Sale</div>
+                        @if (product.PromotionPrice.HasValue)
+                        {
+                            <div class="icon-sale-label sale-left">Sale</div>
+                        }
+                        @if (product.HotFlag.HasValue)
+                        {
+                            if(product.HotFlag == true)
+                            {
+                                <div class="icon-hot-label hot-left">Hot</div>
+                            }
+                        }
                         <div class="large-image"> <a href="@product.Image" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img class="zoom-img" src="@product.Image" alt="@product.Name"> </a> </div>
                         <div class="flexslider flexslider-thumb">
                             <ul class="previews-list slides">
@@ -114,16 +125,8 @@
                                     </div>
 
                                 </div>
-                                <button class="button pro-add-to-cart" id="btnAddToCart" data-id="@Model.Product.Id" title="Add to Cart" type="button"><span id="span-cart"><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
-
-                                  
-
-
-
-
-
-
-
+                                
+                                    <button class="button pro-add-to-cart" id="btnAddToCart" data-id="@Model.Product.Id" data-login="@User.Identity.IsAuthenticated" data-url="@productUrl" title="Add to Cart" type="button"><span id="span-cart"><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
                             </form>
 
                         </div>
@@ -193,12 +196,6 @@
                                                         <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
                                                     </a>
                                                 </div>
-                                                <div class="pr-info-area">
-                                                    <div class="pr-button">
-                                                        <div class="mt-button add_to_wishlist"> <a href="#"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button quick-view"> <a href="#"> <i class="fa fa-search"></i> </a> </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="item-info">
                                                 <div class="info-inner">
@@ -211,9 +208,6 @@
                                                                     <span class="price">@item.Price.ToString("N0")</span>
                                                                 </span>
                                                             </div>
-                                                        </div>
-                                                        <div class="pro-action">
-                                                            <button type="button" class="add-to-cart" data-id="@item.Id"><span> Add To Cart</span> </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -257,12 +251,7 @@
                                                         <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
                                                     </a>
                                                 </div>
-                                                <div class="pr-info-area">
-                                                    <div class="pr-button">
-                                                        <div class="mt-button add_to_wishlist"> <a href="#"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button quick-view"> <a href="#"> <i class="fa fa-search"></i> </a> </div>
-                                                    </div>
-                                                </div>
+                                               
                                             </div>
                                             <div class="item-info">
                                                 <div class="info-inner">
@@ -275,9 +264,6 @@
                                                                     <span class="price">@item.Price.ToString("N0")</span>
                                                                 </span>
                                                             </div>
-                                                        </div>
-                                                        <div class="pro-action">
-                                                            <button type="button" class="add-to-cart" data-id="@item.Id"><span>Add to Cart</span> </button>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -40,16 +40,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="row">
-    <div class="col-md-2 col-sm-2 col-xs-2">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_content">
-                    <ul id="treeProductCategory"></ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-10 col-sm-10 col-xs-10">
+    <div class="col-md-9 col-sm-9 col-xs-9">
         <div class="x_panel">
             <div class="x_content">
                 <table class="table table-striped">
@@ -90,6 +81,15 @@
             </div>
         </div>
     </div>
+    <div class="col-md-3 col-sm-3 col-xs-3">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <ul id="treeProductCategory"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script id="table-template" type="x-tmpl-mustache">
     <tr>
@@ -104,4 +104,4 @@
         </th>
     </tr>
 </script>
-@Html.Partial("_AddEditModal.cshtml") 
+@await Html.PartialAsync("_AddEditModal.cshtml") 

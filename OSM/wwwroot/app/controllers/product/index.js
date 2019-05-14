@@ -243,7 +243,7 @@
         }
     }
 
-    function deleteProduct(id) {
+    function deleteProduct(that) {
         osm.confirm('Are you sure to delete?', function () {
             $.ajax({
                 type: "POST",
@@ -279,7 +279,6 @@
                 var data = response;
                 $('#hidIdM').val(data.Id);
                 $('#hidDCM').val(data.DateCreated);
-                $('#hidDateCreatedM').val(data.DateCreated);
                 $('#txtNameM').val(data.Name);
                 initTreeDropDownCategory(data.CategoryId);
 
@@ -408,9 +407,12 @@
                 $.each(response.Results, function (i, item) {
                     render += Mustache.render(template, {
                         Id: item.Id,
+                        Picture: item.Image == null ? "/client-side/images/products/no-image.svg.png" : item.Image,
                         Name: item.Name,
                         CategoryName: item.ProductCategory.Name,
                         Price: osm.formatNumber(item.Price, 0),
+                        OriginalPrice: osm.formatNumber(item.OriginalPrice, 0),
+                        PromotionPrice: item.PromotionPrice == null ? null : osm.formatNumber(item.PromotionPrice, 0),
                         CreatedDate: osm.dateTimeFormatJson(item.DateCreated),
                         ModifiedDate: osm.dateTimeFormatJson(item.DateModified),
                         Status: osm.getStatus(item.Status)
@@ -443,7 +445,7 @@
         //Bind Pagination Event
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
-            visiblePages: 7,
+            visiblePages: 3,
             first: 'First',
             prev: 'Prev',
             next: 'Next',

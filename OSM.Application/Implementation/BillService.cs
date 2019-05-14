@@ -48,7 +48,7 @@ namespace OSM.Application.Implementation
             foreach (var detail in orderDetails)
             {
                 var product = _productRepository.FindById(detail.ProductId);
-                detail.Price = product.Price;
+                detail.Price = product.PromotionPrice ?? product.Price;
             }
             order.BillDetails = orderDetails;
             order.DateCreated = DateTime.Now;

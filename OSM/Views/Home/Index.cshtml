@@ -3,8 +3,6 @@
     ViewData["Title"] = Model.Title;
     ViewData["MetaKeyword"] = Model.MetaKeyword;
     ViewData["MetaDescription"] = Model.MetaDescription;
-    var lastestFlag = false;
-   
 }
 @section Scripts{
     <script src="~/client-app/controllers/home/index.js"></script>
@@ -42,7 +40,6 @@
     </div>
 </div>
 <!-- service section -->
-
 @*<partial name="_ServicePartial.cshtml" />*@
 <div class="inner-box">
     <div class="container">
@@ -68,29 +65,33 @@
                 <div class="jtv-best-sale-list">
                     <div class="wpb_wrapper">
                         <div class="best-title text-left">
-                            <h2>New Products</h2>
+                            <h2>Special Offers</h2>
                         </div>
                     </div>
                     <div class="slider-items-products">
                         <div id="jtv-best-sale-slider" class="product-flexslider">
                             <div class="slider-items">
-                                @foreach (var item in Model.LastestProducts)
+                                @foreach (var item in Model.SpecialOffers)
                                 {
                                     <div class="product-item">
                                         <div class="item-inner">
                                             <div class="product-thumbnail">
-                                                <div class="icon-new-label new-left">New</div>
+                                                @if (item.HomeFlag.HasValue)
+                                                {
+                                                    <div class="icon-new-label new-left">New</div>
+                                                }
+                                                else if (item.HotFlag.HasValue)
+                                                {
+                                                    <div class="icon-hot-label hot-left">Hot</div>
+                                                }
+                                                <div class="icon-sale-label sale-right">Sale</div>
+
                                                 <div class="pr-img-area">
                                                     <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">
                                                         <figure>
                                                             <img class="first-img" src=@item.Image alt="@item.Name">
                                                         </figure>
                                                     </a>
-                                                </div>
-                                                <div class="pr-info-area">
-                                                    <div class="pr-button">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="item-info">
@@ -99,7 +100,11 @@
                                                     <div class="item-content">
                                                         <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                         <div class="item-price">
-                                                            <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                            <div class="price-box">
+
+                                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") </span> </p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -121,7 +126,7 @@
 <div class="container">
     <div class="home-tab">
         <div class="tab-title text-left">
-            <h2>Best selling</h2>
+            <h2>Best Selling</h2>
             <ul class="nav home-nav-tabs home-product-tabs">
                 @for (var i = 0; i < Model.HomeCategories.Count; i++)
                 {
@@ -160,7 +165,19 @@
                                         <div class="product-item">
                                             <div class="item-inner">
                                                 <div class="product-thumbnail">
-                                                    <div class="icon-new-label new-left">New</div>
+
+                                                    @if (item.HotFlag.HasValue)
+                                                    {
+                                                        <div class="icon-hot-label hot-right">Hot</div>
+                                                    }
+                                                    @if (item.HomeFlag.HasValue)
+                                                    {
+                                                        <div class="icon-new-label new-left">New</div>
+                                                    }
+                                                    else if (item.PromotionPrice.HasValue)
+                                                    {
+                                                        <div class="icon-sale-label sale-left">Sale</div>
+                                                    }
                                                     <div class="pr-img-area">
                                                         <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">
                                                             <figure>
@@ -169,13 +186,6 @@
                                                             </figure>
                                                         </a>
                                                     </div>
-                                                    @*<div class="pr-info-area">
-                                                        <div class="pr-button">
-                                                            <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                            <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                                                            <div class="mt-button quick-view"> <a href="quick_view.html"> <i class="fa fa-search"></i> </a> </div>
-                                                        </div>
-                                                    </div>*@
                                                 </div>
                                                 <div class="item-info">
                                                     <div class="info-inner">
@@ -183,10 +193,18 @@
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                             <div class="item-price">
-                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
-                                                            </div>
-                                                            <div class="pro-action">
-                                                                <button type="button" data-id="@item.Id" class="add-to-cart"><span> Purchase</span> </button>
+                                                                @if (item.PromotionPrice.HasValue)
+                                                                {
+                                                                    <div class="price-box">
+
+                                                                        <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                                        <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") </span> </p>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                                }
                                                             </div>
                                                         </div>
                                                     </div>
@@ -203,7 +221,7 @@
         </div>
     </div>
 </div>
-@*<div class="featured-products">
+<div class="featured-products">
     <div class="container">
         <div class="row">
 
@@ -218,141 +236,45 @@
                     <div class="slider-items-products">
                         <div id="toprate-products-slider" class="product-flexslider">
                             <div class="slider-items">
+                                @for (var i = 0; i < Model.HotProducts.Count/2; i++)
+                                {
+                                    var upperProduct = Model.HotProducts[i];
+                                    var belowProduct = Model.HotProducts[i + 1];
+                                    var hotProducts = new List<ProductViewModel> { upperProduct, belowProduct };
                                 <ul class="products-grid">
-                                    <li class="item">
-                                        <div class="item-inner">
-                                            <div class="item-img"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="HTML template" src="/client-side/images/products/product-1.jpg"> </a> </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="Product title here" href="single_product.html">Product title here </a> </div>
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="pro-action">
-                                                        <button type="button" class="add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                    </div>
-                                                    <div class="pr-button-hover">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="item-inner">
-                                            <div class="item-img"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="HTML template" src="/client-side/images/products/product-1.jpg"> </a> </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="Product title here" href="single_product.html">Product title here </a> </div>
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$99.99</span> </span> </div>
-                                                    </div>
-                                                    <div class="pro-action">
-                                                        <button type="button" class="add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                    </div>
-                                                    <div class="pr-button-hover">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <ul class="products-grid">
-                                    <li class="item">
-                                        <div class="item-inner">
-                                            <div class="item-img"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="HTML template" src="/client-side/images/products/product-1.jpg"> </a> </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="Product title here" href="single_product.html">Product title here </a> </div>
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="pro-action">
-                                                        <button type="button" class="add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                    </div>
-                                                    <div class="pr-button-hover">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="item-inner">
-                                            <div class="item-img"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="HTML template" src="/client-side/images/products/product-1.jpg"> </a> </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="Product title here" href="single_product.html">Product title here </a> </div>
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$99.99</span> </span> </div>
-                                                    </div>
-                                                    <div class="pro-action">
-                                                        <button type="button" class="add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                    </div>
-                                                    <div class="pr-button-hover">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <ul class="products-grid">
-                                    <li class="item">
-                                        <div class="item-inner">
-                                            <div class="item-img"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="HTML template" src="/client-side/images/products/product-1.jpg"> </a> </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="Product title here" href="single_product.html">Product title here </a> </div>
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="pro-action">
-                                                        <button type="button" class="add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                    </div>
-                                                    <div class="pr-button-hover">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="item-inner">
-                                            <div class="item-img"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="HTML template" src="/client-side/images/products/product-1.jpg"> </a> </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="Product title here" href="single_product.html">Product title here </a> </div>
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $456.00 </span> </p>
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $567.00 </span> </p>
+                                    @foreach (var item in hotProducts)
+                                    {
+                                        <li class="item">
+                                            <div class="item-inner">
+                                                <div class="item-img"> <a class="product-image" title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html"> <img alt="@item.Name" src="@item.Image"> </a> </div>
+                                                <div class="item-info">
+                                                    <div class="info-inner">
+                                                        <div class="item-title"> <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">@item.Name </a> </div>
+                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        <div class="item-price">
+                                                            @if (item.PromotionPrice.HasValue)
+                                                            {
+                                                                <div class="price-box">
+
+                                                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                                    <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") </span> </p>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                            }
                                                         </div>
-                                                    </div>
-                                                    <div class="pro-action">
-                                                        <button type="button" class="add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                    </div>
-                                                    <div class="pr-button-hover">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    }
+
+
                                 </ul>
+                                }
                             </div>
                         </div>
                     </div>
@@ -362,7 +284,7 @@
             <div class="col-md-4 top-banner hidden-sm">
                 <div class="jtv-banner3">
                     <div class="jtv-banner3-inner">
-                        <a href="#"><img src="/client-side/images/sub1a.jpg" alt="HTML template"></a>
+                        <a href="#"><img src="~/client-side/images/sub1a.jpg" alt="HTML template"></a>
                         <div class="hover_content">
                             <div class="hover_data bottom">
                                 <div class="desc-text">Top Brands at discount prices </div>
@@ -384,75 +306,54 @@
                     <div class="slider-items-products">
                         <div id="new-products-slider" class="product-flexslider">
                             <div class="slider-items">
-
-                                @foreach (var item in Model.LastestProducts)
+                                @for (var i = 0; i < Model.LastestProducts.Count/2; i++)
                                 {
-                                    if (!lastestFlag)
+                                    var upperProduct = Model.LastestProducts[i];
+                                    var belowProduct = Model.LastestProducts[i + 1];
+                                    var lastestProducts = new List<ProductViewModel> { upperProduct, belowProduct };
+                                <ul class="products-grid">
+                                    @foreach (var item in lastestProducts)
                                     {
-                                    <ul class="products-grid">
-                                    <li class="item">
-                                        <div class="item-inner">
-                                            <div class="item-img"> <a class="product-image" title="" href=""> <img alt="HTML template" src="/client-side/images/products/product-1.jpg"> </a> </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="Product title here" href="single_product.html">Product title here </a> </div>
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="pro-action">
-                                                        <button type="button" class="add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                    </div>
-                                                    <div class="pr-button-hover">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    }else{
-                                    <li class="item">
-                                        <div class="item-inner">
-                                            <div class="item-img"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="HTML template" src="/client-side/images/products/product-1.jpg"> </a> </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="Product title here" href="single_product.html">Product title here </a> </div>
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $456.00 </span> </p>
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $567.00 </span> </p>
+                                        <li class="item">
+                                            <div class="item-inner">
+                                                <div class="item-img"> <a class="product-image" title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html"> <img alt="@item.Name" src="@item.Image"> </a> </div>
+                                                <div class="item-info">
+                                                    <div class="info-inner">
+                                                        <div class="item-title"> <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">@item.Name </a> </div>
+                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        <div class="item-price">
+                                                            @if (item.PromotionPrice.HasValue)
+                                                            {
+                                                                <div class="price-box">
+
+                                                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                                    <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") </span> </p>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                            }
                                                         </div>
-                                                    </div>
-                                                    <div class="pro-action">
-                                                        <button type="button" class="add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                    </div>
-                                                    <div class="pr-button-hover">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                            }
-
-                                           
-
+                                        </li>
                                     }
 
+                                </ul>
+                                }
 
 
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>*@
+</div>
 
 <!-- Blog -->
 <section class="blog-post-wrapper">
@@ -470,7 +371,7 @@
                                 <a href="/@item.SeoAlias-b.@(item.Id).html"> <img class="primary-img" src="@item.Image" alt="@item.Name"></a>
                                 <div class="blog-btm-desc">
                                     <div class="blog-top-desc">
-                                        <div class="blog-date"> @item.DateModified </div>
+                                        <div class="blog-date"> @item.DateModified.ToString("MM/dd/yyyy") </div>
                                         <h4><a href="/@item.SeoAlias-b.@(item.Id).html">@item.Name</a></h4>
                                         <div class="jtv-entry-meta">
                                             <i class="fa fa-user-o"></i> <strong>@item.Author</strong>

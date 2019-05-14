@@ -127,7 +127,7 @@ namespace OSM.Areas.Admin.Controllers
                 using (ExcelPackage package = new ExcelPackage(templateDocumentStream))
                 {
                     // add a new worksheet to the empty workbook
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets["TEDUOrder"];
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets["OSM Order"];
                     // Data Acces, load order header data.
                     var billDetail = _billService.GetDetail(billId);
 

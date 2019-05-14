@@ -14,6 +14,7 @@ namespace OSM.Models
         public List<SlideViewModel> HomeSlides { get; set; }
         public List<ProductViewModel> HotProducts { get; set; }
         public List<ProductViewModel> LastestProducts { get; set; }
+        public List<ProductViewModel> SpecialOffers { get; set; }
         public List<ProductCategoryViewModel> HomeCategories { set; get; }
         public string Title { set; get; }
         public string MetaKeyword { set; get; }

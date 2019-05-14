@@ -63,7 +63,7 @@ namespace OSM.Application.Implementation
 
         public PagedResult<ProductCategoryViewModel> GetAllPaging(string keyword, int page, int pageSize)
         {
-            var query = _productCategoryRepository.FindAll(x => x.Status == Status.Active);
+            var query = _productCategoryRepository.FindAll();
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.Name.Contains(keyword));
 

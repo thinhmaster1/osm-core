@@ -184,7 +184,7 @@ namespace OSM.Application.Implementation
 
         public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
-            var query = _productRepository.FindAll(x => x.Status == Status.Active);
+            var query = _productRepository.FindAll();
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.Name.Contains(keyword));
             if (categoryId.HasValue)
@@ -352,7 +352,7 @@ namespace OSM.Application.Implementation
 
         public List<ProductViewModel> GetUpsellProducts(int top)
         {
-            return _productRepository.FindAll(x => x.PromotionPrice != null)
+            return _productRepository.FindAll(x => x.PromotionPrice != null && x.Status == Status.Active)
                .OrderByDescending(x => x.DateModified)
                .Take(top)
                .ProjectTo<ProductViewModel>().ToList();

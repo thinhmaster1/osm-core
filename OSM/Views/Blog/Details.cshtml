@@ -9,8 +9,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <ul>
-                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
-                    <li class="">@Model.Name</li>
+                    <li class="home"> <a title="Go to Home Page" href="/home">Home</a><span>&raquo;</span></li>
+                    <li class=""><a title="Go to Blogs Page" href="blogs.html">Blogs</a><span>&raquo;</span></li>
+                    <li class=""><strong>@Model.Name</strong></li>
                 </ul>
             </div>
         </div>
@@ -20,22 +21,34 @@
 <section class="blog_post">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12">
+            <div class="col-xs-12 col-sm-9">
                 <div class="entry-detail">
                     <div class="page-title">
+                    </div>
+                    <div class="entry-photo">
+                        <figure><img src="@Model.Image" alt="@Model.Name"></figure>
                     </div>
                     <div class="entry-meta-data">
 
                         <div class="blog-top-desc">
+                            <div class="blog-date"> @Model.DateModified.ToString("dd MMMM yyyy")</div>
                             <h1>@Model.Name</h1>
+                            <div class="jtv-entry-meta"> <i class="fa fa-user-o"></i> <strong>@Model.Author</strong> </div>
                         </div>
+
+
 
                     </div>
                     <div class="content-text clearfix">
+                        <p>@Model.Description</p>
                         @Html.Raw(Model.Content)
                     </div>
                 </div>
+
             </div>
+            <!-- right colunm -->
+            @await Component.InvokeAsync("BlogSideBar")
+            <!-- ./right colunm -->
         </div>
     </div>
 </section>

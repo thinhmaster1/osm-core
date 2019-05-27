@@ -46,6 +46,17 @@ namespace OSM.Controllers
             {
                 return Redirect("/cart.html");
             }
+            else
+            {
+                foreach (var item in session)
+                {
+                    var quantity = _productService.GetQuantity(item.Product.Id, item.Color.Id, item.Size.Id);
+                    if(quantity.Quantity < item.Quantity)
+                    {
+                        item.Quantity = quantity.Quantity;
+                    }
+                }
+            }
             model.Carts = session;
             return View(model);
         }
@@ -58,11 +69,21 @@ namespace OSM.Controllers
             
             if (ModelState.IsValid)
             {
-                if (session != null)
+                if (session != null || session.Count() == 0)
                 {
                     var details = new List<BillDetailViewModel>();
                     foreach (var item in session)
                     {
+                        var quantity = _productService.GetQuantity(item.Product.Id, item.Color.Id, item.Size.Id);
+                        if(quantity.Quantity >= item.Quantity)
+                        {
+                            _productService.UpdateQuantity(quantity.Id, quantity.Quantity - item.Quantity);
+                        }
+                        else
+                        {
+                            item.Quantity = quantity.Quantity;
+                            _productService.UpdateQuantity(quantity.Id, 0);
+                        }
                         details.Add(new BillDetailViewModel()
                         {
                             Product = item.Product,
@@ -71,12 +92,9 @@ namespace OSM.Controllers
                             SizeId = item.Size.Id,
                             Quantity = item.Quantity,
                             ProductId = item.Product.Id
-                            
+
                         });
-                        var quantity = _productService.GetQuantity(item.Product.Id, item.Color.Id, item.Size.Id);
-                        
-                        _productService.UpdateQuantity(quantity.Id, item.Quantity);
-                        
+
                     }
                     var billViewModel = new BillViewModel()
                     {
@@ -85,7 +103,8 @@ namespace OSM.Controllers
                         CustomerAddress = model.CustomerAddress,
                         CustomerName = model.CustomerName,
                         CustomerMessage = model.CustomerMessage,
-                        BillDetails = details
+                        BillDetails = details,
+                        Status = Status.Active
                     };
                     if (User.Identity.IsAuthenticated == true)
                     {
@@ -96,6 +115,7 @@ namespace OSM.Controllers
                     try
                     {
                         _billService.Save();
+                        billViewModel.DateCreated = DateTime.Now;
                         var content = await _viewRenderService.RenderToStringAsync("Cart/_BillMail", billViewModel);
                         //Send mail
                         await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], "New bill from Online Shopping Mart", content);

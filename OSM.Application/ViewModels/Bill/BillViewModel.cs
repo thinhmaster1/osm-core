@@ -22,7 +22,7 @@ namespace OSM.Application.ViewModels.Bill
         [MaxLength(50)]
         public string CustomerMobile { set; get; }
 
-        [Required]
+ 
         [MaxLength(256)]
         public string CustomerMessage { set; get; }
 

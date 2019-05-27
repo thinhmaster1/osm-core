@@ -65,18 +65,12 @@
                                                 }
 
                                                 <div class="pr-img-area">
-                                                    <a title="Ipsums Dolors Untra" href="@url">
+                                                    <a title="@item.Name" href="@url">
                                                         <figure> <img style="object-fit:scale-down"class="first-img" src="@item.Image" alt="@item.Name"> 
                                                        </figure>
                                                     </a>
                                                 </div>
-                                                <div class="pr-info-area">
-                                                    <div class="pr-button">
-                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart"></i> </a> </div>
-                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-signal"></i> </a> </div>
-                                                        <div class="mt-button quick-view"> <a href="quick_view.html"> <i class="fa fa-search"></i> </a> </div>
-                                                    </div>
-                                                </div>
+                                               
                                             </div>
                                             <div class="item-info">
                                                 <div class="info-inner">
@@ -84,7 +78,25 @@
                                                     <div class="item-content">
                                                         <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                         <div class="item-price">
-                                                            <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                            @if (item.PromotionPrice.HasValue)
+                                                            {
+                                                                <p class="special-price">
+                                                                    <span class="price-label">Special Price</span>
+                                                                    <span class="price"> @item.PromotionPrice.Value.ToString("N0") VND</span>
+                                                                </p>
+                                                                <p class="old-price">
+                                                                    <span class="price-label">Regular Price:</span>
+                                                                    <span class="price"> @item.Price.ToString("N0") </span>
+                                                                </p>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <p class="special-price">
+                                                                    <span class="price-label">Price</span>
+                                                                    <span class="price"> @item.Price.ToString("N0") VND</span>
+                                                                </p>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>

@@ -15,6 +15,7 @@ namespace OSM.Application.Interfaces
         void Delete(int id);
 
         List<ProductCategoryViewModel> GetAll();
+        List<ProductCategoryViewModel> GetAllActive();
 
         List<ProductCategoryViewModel> GetAll(string keyword);
 

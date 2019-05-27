@@ -1,0 +1,45 @@
+﻿@model OSM.Models.BlogViewModels.BlogViewModel
+<section class="blog_post">
+    <div class="container">
+
+        <!-- row -->
+        <div class="row">
+
+            <!-- Center colunm-->
+            <div class="col-xs-12 col-sm-9" id="center_column">
+                <div class="page-title">
+                    <h2>Blog</h2>
+                </div>
+                <ul class="blog-posts">
+                    @foreach (var item in Model.Data.Results)
+                    {
+                        <li class="post-item wow fadeInUp">
+                            <article class="entry">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="entry-thumb image-hover2">
+                                            <a href="@item.SeoAlias-b.@(item.Id).html">
+                                                <figure><img src="@item.Image?w=317" alt="@item.Name"></figure>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h3 class="entry-title"><a href="@item.SeoAlias-b.@(item.Id).html">@item.Name</a></h3>
+                                        <div class="entry-meta-data"> <span class="author"> <i class="pe-7s-user"></i>&nbsp; by: @item.Author</span>   <span class="date"><i class="pe-7s-date"></i>&nbsp; @item.DateModified.ToString("yyyy-MM-dd")</span> </div>
+                                        <div class="entry-excerpt">@(item.Description.Length > 450 ? item.Description.Substring(0, 450) : item.Description)...</div>
+                                        <div class="entry-more"> <a href="@item.SeoAlias-b.@(item.Id).html" class="button"> Continus reading &nbsp; <i class="fa fa-angle-double-right"></i></a> </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+                    }
+
+                </ul>
+                @(await Component.InvokeAsync("Pager", Model.Data))
+            </div>
+            <!-- ./ Center colunm -->
+            @await Component.InvokeAsync("BlogSideBar")
+        </div>
+        <!-- ./row-->
+    </div>
+</section>

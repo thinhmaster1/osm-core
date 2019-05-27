@@ -928,8 +928,8 @@ footer {
 }
 .jqstooltip {
     background: #34495E !important;
-    width: 30px !important;
-    height: 22px !important;
+    width: auto !important;
+    height: auto !important;
     text-decoration: none
 }
 .tooltip {
@@ -4227,3 +4227,4 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .dataTables_wrapper > .row{
   overflow:auto !important; /*prevent datatables overflowing its container*/
 }
+

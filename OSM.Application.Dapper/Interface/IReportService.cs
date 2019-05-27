@@ -9,5 +9,8 @@ namespace OSM.Application.Dapper.Interface
     public interface IReportService
     {
         Task<IEnumerable<RevenueReportViewModel>> GetReportAsync(string fromDate, string toDate);
+        Task<IEnumerable<BillViewModel>> GetBillAsync();
+        Task AutoCompleteBillAsync();
+        Task DeActiveProductAsync();
     }
 }

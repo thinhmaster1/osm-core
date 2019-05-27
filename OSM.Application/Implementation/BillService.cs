@@ -94,10 +94,11 @@ namespace OSM.Application.Implementation
             _orderRepository.Update(order);
         }
 
-        public void UpdateStatus(int billId, BillStatus status)
+        public void UpdateStatus(int billId, BillStatus billStatus, Status status)
         {
             var order = _orderRepository.FindById(billId);
-            order.BillStatus = status;
+            order.BillStatus = billStatus;
+            order.Status = status;
             _orderRepository.Update(order);
         }
 
@@ -112,9 +113,19 @@ namespace OSM.Application.Implementation
         }
 
         public PagedResult<BillViewModel> GetAllPaging(string startDate, string endDate, string keyword
-            , int pageIndex, int pageSize)
+            , int pageIndex, int pageSize, int? status)
         {
             var query = _orderRepository.FindAll();
+            if (status == 1)
+            {
+                 query = _orderRepository.FindAll(x => x.Status == Status.Active);
+            }
+            if(status == 0)
+            {
+                query = _orderRepository.FindAll(x => x.Status == Status.InActive);
+            }
+
+            
             if (!string.IsNullOrEmpty(startDate))
             {
                 DateTime start = DateTime.ParseExact(startDate, "dd/MM/yyyy", CultureInfo.GetCultureInfo("vi-VN"));
@@ -123,7 +134,7 @@ namespace OSM.Application.Implementation
             if (!string.IsNullOrEmpty(endDate))
             {
                 DateTime end = DateTime.ParseExact(endDate, "dd/MM/yyyy", CultureInfo.GetCultureInfo("vi-VN"));
-                query = query.Where(x => x.DateCreated <= end);
+                query = query.Where(x => x.DateCreated <= end.AddDays(1));
             }
             if (!string.IsNullOrEmpty(keyword))
             {

@@ -1,0 +1,109 @@
+﻿@model OSM.Models.BlogViewModels.BlogSideBarViewModel
+<aside class="sidebar col-xs-12 col-sm-3">
+    <!-- Blog category -->
+    <div class="block blog-module">
+        <div class="sidebar-bar-title">
+            <h3>Blog Search</h3>
+        </div>
+        <div class="block_content">
+            <!-- layered -->
+            <div class="layered layered-category">
+                <div class="layered-content">
+                    <div id="search">
+                        <form method="get" action="/blogs.html">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search blog..." name="keyword">
+                                <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- ./layered -->
+        </div>
+    </div>
+    <!-- ./blog category  -->
+    <!-- Popular Posts -->
+    <div class="block blog-module">
+        <div class="sidebar-bar-title">
+            <h3>Popular Posts</h3>
+        </div>
+        <div class="block_content">
+            <!-- layered -->
+            <div class="layered">
+                <div class="layered-content">
+                    <ul class="blog-list-sidebar">
+                        @foreach (var item in Model.HotestBlogs)
+                        {
+                            <li>
+                                <div class="post-thumb"> <a href="@item.SeoAlias-b.@(item.Id).html"><img src="@item.Image?w=70" alt="@item.Name"></a> </div>
+                                <div class="post-info">
+                                    <h5 class="entry_title"><a href="@item.SeoAlias-b.@(item.Id).html">@item.Name</a></h5>
+                                    <div class="post-meta"> <span class="date"><i class="pe-7s-date"></i>@item.DateCreated.ToString("yyyy-MM-dd")</span>  </div>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <!-- ./layered -->
+        </div>
+    </div>
+    <!-- ./Popular Posts -->
+    <!-- Recent Comments -->
+    <div class="block blog-module">
+        <div class="sidebar-bar-title">
+            <h3>Lastest News</h3>
+        </div>
+        <div class="block_content">
+            <!-- layered -->
+            <!-- layered -->
+            <div class="layered">
+                <div class="layered-content">
+                    <ul class="blog-list-sidebar">
+                        @foreach (var item in Model.LastestBlogs)
+                        {
+                            <li>
+                                <div class="post-thumb"> <a href="@item.SeoAlias-b.@(item.Id).html"><img src="@item.Image?w=70" alt="@item.Name"></a> </div>
+                                <div class="post-info">
+                                    <h5 class="entry_title"><a href="@item.SeoAlias-b.@(item.Id).html">@item.Name</a></h5>
+                                    <div class="post-meta"> <span class="date"><i class="pe-7s-date"></i>@item.DateCreated.ToString("yyyy-MM-dd")</span>  </div>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <!-- ./layered -->
+            <!-- ./layered -->
+        </div>
+    </div>    
+    <!-- tags -->
+    @*<div class="popular-tags-area block">
+        <div class="sidebar-bar-title">
+            <h3>Popular Tags</h3>
+        </div>
+        <div class="tag">
+            <ul>
+                <li><a href="#">Boys</a></li>
+                <li><a href="#">Camera</a></li>
+                <li><a href="#">good</a></li>
+                <li><a href="#">Computers</a></li>
+                <li><a href="#">Phone</a></li>
+                <li><a href="#">clothes</a></li>
+                <li><a href="#">girl</a></li>
+                <li><a href="#">shoes</a></li>
+                <li><a href="#">women</a></li>
+                <li><a href="#">accessoties</a></li>
+                <li><a href="#">View All Tags</a></li>
+            </ul>
+        </div>
+    </div>*@
+
+    <!-- ./tags -->
+    <!-- ./Recent Comments -->
+
+
+</aside>

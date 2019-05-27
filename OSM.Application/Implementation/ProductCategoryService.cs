@@ -14,12 +14,16 @@ namespace OSM.Application.Implementation
     public class ProductCategoryService : IProductCategoryService
     {
         private IRepository<ProductCategory, int> _productCategoryRepository;
+        private IRepository<Product, int> _productRepository;
         private IUnitOfWork _unitOfWork;
 
-        public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository,
+        public ProductCategoryService(
+            IRepository<ProductCategory, int> productCategoryRepository,
+            IRepository<Product, int> productRepository,
             IUnitOfWork unitOfWork)
         {
             _productCategoryRepository = productCategoryRepository;
+            _productRepository = productRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -51,6 +55,12 @@ namespace OSM.Application.Implementation
                 return _productCategoryRepository.FindAll().OrderBy(x => x.ParentId)
                     .ProjectTo<ProductCategoryViewModel>()
                     .ToList();
+        }
+
+        public List<ProductCategoryViewModel> GetAllActive()
+        {
+            return _productCategoryRepository.FindAll(x => x.Status == Status.Active).OrderBy(x => x.ParentId).OrderBy(x => x.SortOrder)
+              .ProjectTo<ProductCategoryViewModel>().ToList();
         }
 
         public List<ProductCategoryViewModel> GetAllByParentId(int parentId)
@@ -94,18 +104,18 @@ namespace OSM.Application.Implementation
         public List<ProductCategoryViewModel> GetHomeCategories(int top)
         {
             var query = _productCategoryRepository
-                .FindAll(x => x.HomeFlag == true, c => c.Products)
+                .FindAll(x => x.HomeFlag == true && x.Status == Status.Active, c => c.Products)
                   .OrderBy(x => x.HomeOrder)
                   .Take(top).ProjectTo<ProductCategoryViewModel>();
 
             var categories = query.ToList();
             foreach (var category in categories)
             {
-                //category.Products = _productRepository
-                //    .FindAll(x => x.HotFlag == true && x.CategoryId == category.Id)
-                //    .OrderByDescending(x => x.DateCreated)
-                //    .Take(5)
-                //    .ProjectTo<ProductViewModel>().ToList();
+                category.Products = _productRepository
+                    .FindAll(x =>  x.HomeFlag == true && x.CategoryId == category.Id && x.Status == Status.Active)
+                    .OrderByDescending(x => x.DateCreated)
+                    .Take(5)
+                    .ProjectTo<ProductViewModel>().ToList();
             }
             return categories;
         }

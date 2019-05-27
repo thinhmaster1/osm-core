@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OSM.Application.Interfaces;
 using OSM.Application.ViewModels.Blog;
+using OSM.Models.BlogViewModels;
+using OSM.Utilities.Constants;
 
 namespace OSM.Controllers
 {
@@ -17,9 +19,14 @@ namespace OSM.Controllers
             _blogService = blogService;
         }
         [Route("blogs.html")]
-        public IActionResult Index()
+        public IActionResult Index(string keyword, int page = 1)
         {
-            var blogs = _blogService.GetAll();
+            var pageSize = CommonConstants.PageSize;
+            var data = _blogService.GetAllPaging(keyword, pageSize, page);
+            var blogs = new Models.BlogViewModels.BlogViewModel
+            {
+                Data = data
+            };
             return View(blogs);
         }
         [Route("{alias}-b.{id}.html", Name = "BlogDetail")]

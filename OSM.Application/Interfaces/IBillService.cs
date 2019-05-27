@@ -14,7 +14,7 @@ namespace OSM.Application.Interfaces
         void Update(BillViewModel billVm);
 
         PagedResult<BillViewModel> GetAllPaging(string startDate, string endDate, string keyword,
-            int pageIndex, int pageSize);
+            int pageIndex, int pageSize, int? status);
         List<BillViewModel> GetAllByCustomerId(Guid id);
         BillViewModel GetDetail(int billId);
 
@@ -22,7 +22,7 @@ namespace OSM.Application.Interfaces
 
         void DeleteDetail(int productId, int billId, int colorId, int sizeId);
 
-        void UpdateStatus(int orderId, BillStatus status);
+        void UpdateStatus(int orderId, BillStatus billStatus, Status status);
 
         List<BillDetailViewModel> GetBillDetails(int billId);
 
@@ -33,6 +33,8 @@ namespace OSM.Application.Interfaces
         SizeViewModel GetSize(int id);
 
         BillViewModel GetBill(int id);
+        
+
         void Save();
     }
 }

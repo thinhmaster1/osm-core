@@ -8,7 +8,7 @@ namespace OSM.Application.Dapper.ViewModels
     {
         public DateTime Date { get; set; }
         public decimal Revenue { get; set; }
-
+        public decimal Fund { get; set; }
         public decimal Profit { get; set; }
     }
 }

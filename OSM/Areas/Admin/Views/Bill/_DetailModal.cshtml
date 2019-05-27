@@ -10,6 +10,9 @@
                     <form class="form-horizontal" role="form" id="frmMaintainance">
                         <div class="form-group">
                             <input type="hidden" id="hidId" value="0" />
+                            <input type="hidden" id="hidCustomerId" value="0" />
+                            <input type="hidden" id="hidDC" value="@DateTime.Now" />
+                            <input type="hidden" id="hidStatus" value="1" />
                             <label for="txtCustomerName" class="col-sm-2 control-label ">Customer name</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtCustomerName" class="form-control" id="txtCustomerName">
@@ -37,13 +40,13 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label ">Payment method</label>
                             <div class="col-sm-10">
-                                <select id="ddlPaymentMethod" class="form-control"></select>
+                                <select id="ddlPaymentMethod" class="form-control" disabled></select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label f class="col-sm-2 control-label ">Bill status</label>
                             <div class="col-sm-10">
-                                <select id="ddlBillStatus" class="form-control"></select>
+                                <select id="ddlBillStatus" class="form-control" disabled></select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -79,17 +82,22 @@
                                 </script>
                             </div>
                         </div>
+                        <div class="pull-right">
+                            <label for="totalPrice">Total Price: </label>
+                            <span id="totalPrice"></span> VND
+                        </div>
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="button" id="btnSave" class="btn btn-success">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-default">Save</button>
+                    <button type="button" id="btnReturn" class="btn btn-primary">Confirm return</button>
+                    <button type="button" id="btnRefuse" class="btn btn-dark">Refuse return</button>
                     <button type="button" id="btnConfirm" class="btn btn-success">Confirm payment</button>
-                    <button type="button" id="btnPending" class="btn btn-warning">Pending</button>
-                    <button type="button" id="btnCancel" class="btn btn-primary">Cancel</button>
+                    <button type="button" id="btnPending" class="btn btn-info">Pending</button>
+                    <button type="button" id="btnCancel" class="btn btn-warning">Cancel</button>
                     <button type="button" id="btnExport" class="btn btn-default">Export</button>
-
                     <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                 </div>
             </div>

@@ -403,33 +403,33 @@ namespace OSM.Data.EF
                           //     new Product(){Name = "Men's T-Shirt 11",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-t-shirt-11",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
                           //     new Product(){Name = "Men's T-Shirt 12",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-t-shirt-12",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
                           // } },
-                          //new ProductCategory() {DateCreated = DateTime.Now, DateModified = DateTime.Now, Name ="Trousers & Jeans",SeoAlias="men-trousers-jeans",ParentId = 4,Status=Status.Active,SortOrder=2,   Products = new List<Product>(){
-                          //     new Product(){Name = "Men's Trouser 1",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-1",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 2",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-2",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 3",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-3",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 4",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-4",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 5",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-5",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 6",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-6",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 7",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-7",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 8",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-8",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 9",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-9",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 10",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-10",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 11",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-11",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Trouser 12",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-trouser-12",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                          new ProductCategory() {DateCreated = DateTime.Now, DateModified = DateTime.Now, Name ="Trousers & Jeans",SeoAlias="men-trousers-jeans",ParentId = 4,Status=Status.Active,SortOrder=2,   Products = new List<Product>(){
+                               new Product(){Name = "Men's Trouser 1",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean1.jpg",SeoAlias = "men-trouser-1",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 2",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean2.jpg",SeoAlias = "men-trouser-2",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 3",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean3.jpg",SeoAlias = "men-trouser-3",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 4",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean4.jpg",SeoAlias = "men-trouser-4",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 5",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean5.jpg",SeoAlias = "men-trouser-5",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 6",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean6.jpg",SeoAlias = "men-trouser-6",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 7",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean7.jpg",SeoAlias = "men-trouser-7",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 8",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean8.jpg",SeoAlias = "men-trouser-8",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 9",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean9.jpg",SeoAlias = "men-trouser-9",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 10",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean10.jpg",SeoAlias = "men-trouser-10",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 11",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean11.jpg",SeoAlias = "men-trouser-11",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 12",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean12.jpg",SeoAlias = "men-trouser-12",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
 
-                          //     new Product(){Name = "Men's Jean 1",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-1",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 2",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-2",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 3",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-3",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 4",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-4",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 5",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-5",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 6",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-6",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 7",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-7",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 8",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-8",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 9",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-9",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 10",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-10",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 11",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-11",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          //     new Product(){Name = "Men's Jean 12",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "men-jean-12",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
-                          // } },
+                               new Product(){Name = "Men's Jean 1",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser1.jpg",SeoAlias = "men-jean-1",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 2",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser2.jpg",SeoAlias = "men-jean-2",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 3",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser3.jpg",SeoAlias = "men-jean-3",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 4",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser4.jpg",SeoAlias = "men-jean-4",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 5",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser5.jpg",SeoAlias = "men-jean-5",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 6",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser6.jpg",SeoAlias = "men-jean-6",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 7",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser7.jpg",SeoAlias = "men-jean-7",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 8",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser8.jpg",SeoAlias = "men-jean-8",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 9",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser9.jpg",SeoAlias = "men-jean-9",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 10",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser10.jpg",SeoAlias = "men-jean-10",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 11",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser11.jpg",SeoAlias = "men-jean-11",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 12",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser12.jpg",SeoAlias = "men-jean-12",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                           } },
 
                           //new ProductCategory() {DateCreated = DateTime.Now, DateModified = DateTime.Now, Name ="Chairs",SeoAlias="chairs",ParentId = 6,Status=Status.Active,SortOrder=2,   Products = new List<Product>(){
                           //          new Product(){Name = "Chair 1",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="",SeoAlias = "chair-1",Price = 200000,Status = Status.Active,OriginalPrice = 134000},
@@ -761,17 +761,55 @@ namespace OSM.Data.EF
                 _context.ProductCategories.AddRange(listProductCategory);
 
             }
-            if (_context.Blogs.Count() == 0)
+            var a = new ProductCategory()
             {
-                var blogs = new List<Blog>
-                {
-                    new Blog(){DateCreated = DateTime.Now, DateModified = DateTime.Now, Name = "Blog Test 1",Status = Status.Active},
-                    new Blog(){DateCreated = DateTime.Now, DateModified = DateTime.Now, Name = "Blog Test 2",Status = Status.Active},
-                    new Blog(){DateCreated = DateTime.Now, DateModified = DateTime.Now, Name = "Blog Test 3",Status = Status.Active}
+                DateCreated = DateTime.Now,
+                DateModified = DateTime.Now,
+                Name = "Men Trousers & Jeans",
+                SeoAlias = "men-trousers-jeans",
+                ParentId = 4,
+                Status = Status.Active,
+                SortOrder = 2,
+                Products = new List<Product>(){
+                               new Product(){Name = "Men's Trouser 1",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser1.jpg",SeoAlias = "men-trouser-1",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 2",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser2.jpg",SeoAlias = "men-trouser-2",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 3",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser3.jpg",SeoAlias = "men-trouser-3",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 4",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser4.jpg",SeoAlias = "men-trouser-4",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 5",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser5.jpg",SeoAlias = "men-trouser-5",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 6",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser6.jpg",SeoAlias = "men-trouser-6",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 7",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser7.jpg",SeoAlias = "men-trouser-7",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 8",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser8.jpg",SeoAlias = "men-trouser-8",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 9",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser9.jpg",SeoAlias = "men-trouser-9",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 10",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser10.jpg",SeoAlias = "men-trouser-10",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 11",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser11.jpg",SeoAlias = "men-trouser-11",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Trouser 12",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-trousers/trouser12.jpg",SeoAlias = "men-trouser-12",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
 
-                };
-                _context.Blogs.AddRange(blogs);
-            }
+                               new Product(){Name = "Men's Jean 1",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean1.jpg",SeoAlias = "men-jean-1",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 2",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean2.jpg",SeoAlias = "men-jean-2",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 3",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean3.jpg",SeoAlias = "men-jean-3",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 4",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean4.jpg",SeoAlias = "men-jean-4",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 5",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean5.jpg",SeoAlias = "men-jean-5",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 6",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean6.jpg",SeoAlias = "men-jean-6",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 7",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean7.jpg",SeoAlias = "men-jean-7",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 8",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean8.jpg",SeoAlias = "men-jean-8",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 9",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean9.jpg",SeoAlias = "men-jean-9",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 10",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean10.jpg",SeoAlias = "men-jean-10",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 11",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean11.jpg",SeoAlias = "men-jean-11",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                               new Product(){Name = "Men's Jean 12",DateCreated=DateTime.Now, DateModified=DateTime.Now, Image="/client-side/images/products/man-jeans/jean12.jpg",SeoAlias = "men-jean-12",Price = 150000,Status = Status.Active,OriginalPrice = 120000},
+                           }
+            };
+            //_context.ProductCategories.Add(a);
+            //if (_context.Blogs.Count() == 0)
+            //{
+            //    var blogs = new List<Blog>
+            //    {
+            //        new Blog(){DateCreated = DateTime.Now, DateModified = DateTime.Now, Name = "Blog Test 1",Status = Status.Active},
+            //        new Blog(){DateCreated = DateTime.Now, DateModified = DateTime.Now, Name = "Blog Test 2",Status = Status.Active},
+            //        new Blog(){DateCreated = DateTime.Now, DateModified = DateTime.Now, Name = "Blog Test 3",Status = Status.Active}
+
+            //    };
+            //    _context.Blogs.AddRange(blogs);
+            //}
             await _context.SaveChangesAsync();
         }
     }

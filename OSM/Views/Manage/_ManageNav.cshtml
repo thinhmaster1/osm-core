@@ -5,10 +5,13 @@
 }
 
 <ul class="nav nav-pills nav-stacked">
-    <li ><a asp-action="Index">Profile</a></li>
+    <li><a asp-action="Index">Profile</a></li>
     @if (hasExternalLogins == true)
     {
-        <li ><a asp-action="ChangePassword">Password</a></li>
+        <li><a asp-action="ChangePassword">Password</a></li>
     }
-    <li><a asp-action="Order">Order Tracking</a></li>
+    <li>
+        <a asp-action="Order">Order Information</a>
+
+    </li>
 </ul>

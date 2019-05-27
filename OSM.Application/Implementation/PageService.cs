@@ -68,7 +68,7 @@ namespace OSM.Application.Implementation
 
         public PageViewModel GetByAlias(string alias)
         {
-            return Mapper.Map<Page, PageViewModel>(_pageRepository.FindSingle(x => x.Alias == alias));
+            return Mapper.Map<Page, PageViewModel>(_pageRepository.FindSingle(x => x.Alias == alias && x.Status == Data.Enums.Status.Active));
         }
 
         public PageViewModel GetById(int id)

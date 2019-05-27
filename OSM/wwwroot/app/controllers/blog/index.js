@@ -38,7 +38,32 @@
             $('#modal-add-edit').modal('show');
 
         });
+        $('#btnSelectImg').on('click', function () {
+            $('#fileInputImage').click();
+        });
+        $("#fileInputImage").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImage",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    $('#txtImageM').val(path);
+                    osm.notify('Upload image succesful!', 'success');
 
+                },
+                error: function () {
+                    osm.notify('There was error uploading files!', 'error');
+                }
+            });
+        });
         $('body').on('click', '.btn-edit', function (e) {
             e.preventDefault();
             var that = $(this).data('id');
@@ -54,11 +79,14 @@
                     var data = response;
                     $('#hidIdM').val(data.Id);
                     $('#txtNameM').val(data.Name);
-
+                    $('#txtImageM').val(data.Image);
                     $('#txtAliasM').val(data.SeoAlias);
                     CKEDITOR.instances.txtContentM.setData(data.Content);
                     $('#ckStatusM').prop('checked', data.Status === 1);
-
+                    $('#txtDescM').val(data.Description);
+                    $('#hidDC').val(data.DateCreated);
+                    $('#ckHotFlagM').prop('checked', data.HotFlag);
+                    $('#ckHomeFlagM').prop('checked', data.HomeFlag);
                     $('#modal-add-edit').modal('show');
                     osm.stopLoading();
 
@@ -77,8 +105,13 @@
                 var name = $('#txtNameM').val();
                 var seoAlias = $('#txtAliasM').val();
                 var content = CKEDITOR.instances.txtContentM.getData();
-                var status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
                 var author = $('#hidIdAuthorM').val();
+                var image = $('#txtImageM').val();
+                var description = $('#txtDescM').val();
+                var dateCreated = $('#hidDC').val();
+                var status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
+                var hotFlag = $('#ckHotFlagM').prop('checked');
+                var homeFlag = $('#ckHomeFlagM').prop('checked');
                 $.ajax({
                     type: "POST",
                     url: "/Admin/Blog/SaveEntity",
@@ -88,7 +121,12 @@
                         Content: content,
                         Status: status,
                         SeoAlias: seoAlias,
-                        Author: author           
+                        Author: author,
+                        Image: image,
+                        Description: description,
+                        Datecreated: dateCreated,
+                        HotFlag: hotFlag,
+                        HomeFlag: homeFlag
                     },
                     dataType: "json",
                     beforeSend: function () {
@@ -143,8 +181,14 @@
         $('#txtNameM').val('');
         $('#txtAliasM').val('');
         CKEDITOR.instances.txtContentM.setData('');
+       
+        $('#txtImageM').val('');
+        $('#txtDescM').val('');
+        var date = new Date();
+        $('#hidDC').val(date.toJSON());
         $('#ckStatusM').prop('checked', true);
-
+        $('#ckHotFlagM').prop('checked', false);
+        $('#ckHomeFlagM').prop('checked', false);
     }
 
     function registerControls() {
@@ -190,6 +234,10 @@
                         render += Mustache.render(template, {
                             Name: item.Name,
                             Id: item.Id,
+                            DateCreated: osm.dateTimeFormatJson(item.DateCreated),
+                            DateModified: osm.dateTimeFormatJson(item.DateModified),
+                            HotFlag: osm.getStatus(item.HotFlag),
+                            HomeFlag: osm.getStatus(item.HomeFlag),
                             Status: osm.getStatus(item.Status)
                         });
                     });

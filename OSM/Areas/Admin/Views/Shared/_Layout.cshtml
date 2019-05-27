@@ -39,9 +39,6 @@
 
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
-                        <div class="profile_pic">
-                            <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
-                        </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
                             <h2>@User.GetSpecificClaim("FullName")</h2>
@@ -65,19 +62,30 @@
                         <div class="nav toggle">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
-
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 @await Html.PartialAsync("_LoginPartial");
                             </li>
-
-                            <li role="presentation" id="announcementArea" class="dropdown">
+                            <li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                    <span class="badge bg-green"><label id="totalAnnouncement"></label></span>
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span id="totalAnnouncement" class="badge bg-green"></span>
                                 </a>
-                                <ul id="annoncementList" class="dropdown-menu list-unstyled msg_list" role="menu"></ul>
+                               <ul id="annoncementList" class="dropdown-menu list-unstyled msg_list" role="menu"></ul>
                             </li>
                         </ul>
+                        @*<ul class="nav navbar-nav navbar-right">
+            <li class="">
+                @await Html.PartialAsync("_LoginPartial");
+            </li>
+
+            <li role="presentation" id="announcementArea" class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <span class="badge bg-green"><label id="totalAnnouncement"></label></span>
+                </a>
+                <ul id="annoncementList" class="dropdown-menu list-unstyled msg_list" role="menu"></ul>
+            </li>
+        </ul>*@
                     </nav>
                 </div>
             </div>

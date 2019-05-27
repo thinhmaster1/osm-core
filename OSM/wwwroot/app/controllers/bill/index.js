@@ -18,7 +18,10 @@
 
         registerEvents();
     }
-
+    var statusActivities = document.getElementById("ddlStatus");
+    statusActivities.addEventListener("change", function () {
+        loadData(true);
+    });
     function registerEvents() {
         $('#txtFromDate, #txtToDate').datepicker({
             autoclose: true,
@@ -33,7 +36,6 @@
                 txtCustomerName: { required: true },
                 txtCustomerAddress: { required: true },
                 txtCustomerMobile: { required: true },
-                txtCustomerMessage: { required: true },
                 ddlBillStatus: { required: true }
             }
         });
@@ -70,16 +72,18 @@
                 success: function (response) {
                     var data = response;
                     $('#hidId').val(data.Id);
+                    $('#hidCustomerId').val(data.CustomerId);
+                    $('#hidDC').val(data.DateCreated);
+                    $('#hidStatus').val(data.Status);
                     $('#txtCustomerName').val(data.CustomerName);
-
                     $('#txtCustomerAddress').val(data.CustomerAddress);
                     $('#txtCustomerMobile').val(data.CustomerMobile);
                     $('#txtCustomerMessage').val(data.CustomerMessage);
                     $('#ddlPaymentMethod').val(data.PaymentMethod);
-                    $('#ddlCustomerId').val(data.CustomerId);
                     $('#ddlBillStatus').val(data.BillStatus);
 
                     var billDetails = data.BillDetails;
+                    var totalPrice = 0;
                     if (data.BillDetails != null && data.BillDetails.length > 0) {
                         var render = '';
                         var templateDetails = $('#template-table-bill-details').html();
@@ -88,7 +92,7 @@
                             var products = getProductOptions(item.ProductId);
                             var colors = getColorOptions(item.ColorId);
                             var sizes = getSizeOptions(item.SizeId);
-
+                            totalPrice += item.Price * item.Quantity;
                             render += Mustache.render(templateDetails,
                                 {
                                     Id: item.Id,
@@ -100,6 +104,45 @@
                         });
                         $('#tbl-bill-details').html(render);
                     }
+                    $('#totalPrice').text(osm.formatNumber(totalPrice,0));
+                    var pending = document.getElementById('btnPending');
+                    var confirm = document.getElementById('btnConfirm');
+                    var cancel = document.getElementById('btnCancel');
+                    var save = document.getElementById('btnSave');
+                    var returned = document.getElementById('btnReturn');
+                    var refuse = document.getElementById('btnRefuse');
+                    if (data.BillStatus == 0) {
+                        pending.disabled = false;
+                        cancel.disabled = false;
+                        save.disabled = false;
+                        returned.disabled = true;
+                        refuse.disabled = true;
+                        confirm.disabled = true;
+                    }
+                    else if (data.BillStatus == 1 ) {
+                        pending.disabled = true;
+                        save.disabled = true;
+                        cancel.disabled = true;
+                        returned.disabled = true;
+                        refuse.disabled = true;
+                        confirm.disabled = false;
+                    }
+                    else if (data.BillStatus == 2 && data.Status == 1) {
+                        pending.disabled = true;
+                        save.disabled = true;
+                        cancel.disabled = true;
+                        returned.disabled = false;
+                        refuse.disabled = false;
+                        confirm.disabled = true;
+                    }
+                    else {
+                        pending.disabled = true;
+                        save.disabled = true;
+                        cancel.disabled = true;
+                        returned.disabled = true;
+                        refuse.disabled = true;
+                        confirm.disabled = true;
+                    }
                     $('#modal-detail').modal('show');
                     osm.stopLoading();
                 },
@@ -110,13 +153,15 @@
             });
         });
 
-        $('#btnSave').on('click', function (e) {
+        $('#btnSave').on('click', function () {
             if ($('#frmMaintainance').valid()) {
                 e.preventDefault();
                 var id = $('#hidId').val();
+                var customerId = $('#hidCustomerId').val();
+                var dateCreated = $('#hidDC').val();
+                var status = $('#hidStatus').val();
                 var customerName = $('#txtCustomerName').val();
                 var customerAddress = $('#txtCustomerAddress').val();
-                var customerId = $('#ddlCustomerId').val();
                 var customerMobile = $('#txtCustomerMobile').val();
                 var customerMessage = $('#txtCustomerMessage').val();
                 var paymentMethod = $('#ddlPaymentMethod').val();
@@ -140,6 +185,8 @@
                     url: "/Admin/Bill/SaveEntity",
                     data: {
                         Id: id,
+                        CustomerId: customerId,
+                        DateCreated: dateCreated,
                         BillStatus: billStatus,
                         CustomerAddress: customerAddress,
                         CustomerId: customerId,
@@ -147,7 +194,7 @@
                         CustomerMobile: customerMobile,
                         CustomerName: customerName,
                         PaymentMethod: paymentMethod,
-                        Status: 1,
+                        Status: status,
                         BillDetails: billDetails
                     },
                     dataType: "json",
@@ -170,7 +217,51 @@
                 return false;
             }
         });
+        $('#btnPending').on('click', function () {
+            $.ajax({
+                url: '/Admin/Bill/UpdateStatus',
+                type: 'post',
+                data: { billId: $('#hidId').val(), billStatus: 1, status: 1 },
+                dataType: 'json',
+                success: function (data) {
+                    osm.notify('The order is shipping.', 'success');
+                    $('#modal-detail').modal('hide');
+                    resetFormMaintainance();
+                    loadData(true);
+                }
 
+
+            });
+        });
+        $('#btnConfirm').on('click', function () {
+            $.ajax({
+                url: '/Admin/Bill/UpdateStatus',
+                type: 'post',
+                data: { billId: $('#hidId').val(), billStatus: 4, status: 1 },
+                dataType: 'json',
+                success: function () {
+                    osm.notify('The order is paid.', 'success');
+                    $('#modal-detail').modal('hide');
+                    resetFormMaintainance();
+                    loadData(true);
+                }
+            });
+        });
+        $('#btnCancel').on('click', function () {
+            e.preventDefault();
+            $.ajax({
+                url: '/Admin/Bill/UpdateStatus',
+                type: 'post',
+                data: { billId: $('#hidId').val(), billStatus: 3, status: 0 },
+                dataType: 'json',
+                success: function () {
+                    osm.notify('The order is canceled.', 'success');
+                    $('#modal-detail').modal('hide');
+                    resetFormMaintainance();
+                    loadData(true);
+                }
+            });
+        });
         $('#btnAddDetail').on('click', function () {
             var template = $('#template-table-bill-details').html();
             var products = getProductOptions(null);
@@ -187,7 +278,34 @@
                 });
             $('#tbl-bill-details').append(render);
         });
-
+        $('#btnReturn').on('click', function () {
+            $.ajax({
+                url: '/Admin/Bill/UpdateStatus',
+                type: 'post',
+                data: { billId: $('#hidId').val(), billStatus: 2, status: 0 },
+                dataType: 'json',
+                success: function () {
+                    osm.notify('The order is refund.', 'success');
+                    $('#modal-detail').modal('hide');
+                    resetFormMaintainance();
+                    loadData(true);
+                }
+            });
+        });
+        $('#btnRefuse').on('click', function () {
+            $.ajax({
+                url: '/Admin/Bill/UpdateStatus',
+                type: 'post',
+                data: { billId: $('#hidId').val(), billStatus: 4, status: 0 },
+                dataType: 'json',
+                success: function () {
+                    osm.notify('The return is refused.', 'success');
+                    $('#modal-detail').modal('hide');
+                    resetFormMaintainance();
+                    loadData(true);
+                }
+            });
+        });
         $('body').on('click', '.btn-delete-detail', function () {
             $(this).parent().parent().remove();
         });
@@ -321,6 +439,8 @@
     }
     function resetFormMaintainance() {
         $('#hidId').val(0);
+        $('#hidCustomerId').val(0);
+        $('#hidDC').val(new Date());
         $('#txtCustomerName').val('');
 
         $('#txtCustomerAddress').val('');
@@ -340,6 +460,7 @@
                 startDate: $('#txtFromDate').val(),
                 endDate: $('#txtToDate').val(),
                 keyword: $('#txtSearchKeyword').val(),
+                status: $('#ddlStatus').val(),
                 page: osm.configs.pageIndex,
                 pageSize: osm.configs.pageSize
             },
@@ -357,7 +478,8 @@
                             Id: item.Id,
                             PaymentMethod: getPaymentMethodName(item.PaymentMethod),
                             DateCreated: osm.dateTimeFormatJson(item.DateCreated),
-                            BillStatus: getBillStatusName(item.BillStatus)
+                            BillStatus: getBillStatusName(item.BillStatus),
+                            Status: item.Status == 1 ? "On Going" : "Finished"
                         });
                     });
                     $("#lbl-total-records").text(response.RowCount);

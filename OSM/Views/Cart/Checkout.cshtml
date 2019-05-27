@@ -143,10 +143,11 @@
                                                     <tr>
                                                         <td class="cart_product"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html"><img src="@item.Product.Image" alt="@item.Product.Name"></a></td>
                                                         <td class="cart_description">
-                                                            <p class="product-name"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html">@item.Product.Name </a></p>
-                                                            <small><a href="#">Color : @item.Color.Name</a></small><br>
-                                                            <small><a href="#">Size : @item.Size.Name</a></small>
-                                                        </td>
+                                                            <p class="product-name"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html"><strong>@item.Product.Name</strong> </a></p>
+                                                            <strong>Color</strong> : @item.Color.Name
+                                                            <br />
+                                                            <strong>Size</strong> : @item.Size.Name
+                                                                                                                                </td>
                                                         <td class="price"><span>@item.Price.ToString("N0") VND</span></td>
                                                         <td class="qty">@item.Quantity</td>
                                                         <td class="price"><span>@((item.Price * item.Quantity).ToString("N0")) VND</span></td>

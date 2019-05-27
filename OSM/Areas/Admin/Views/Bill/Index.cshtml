@@ -3,7 +3,7 @@
 }
 @section Scripts{
 
-    <script src="~/app/controllers/bill/index.min.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/bill/index.js" asp-append-version="true"></script>
     <script>
         var billObj = new BillController();
         billObj.initialize();
@@ -12,8 +12,7 @@
 @section Styles{
     <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 }
-<input type="hidden" id="hid-category-id" value="0" />
-<div class="">
+<div class="container">
     <div class="page-title">
         <div class="title_left">
             <h3>Bill management</h3>
@@ -35,7 +34,11 @@
                 <button class="btn btn-default" id="btn-search" type="button">Search!</button>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                <select class="form-control" id="ddlStatus">
+                    <option value="-1" selected="selected">--Status--</option>
+                    <option value="1"> On Going!</option>
+                    <option value="0">Finished!</option>
+                </select>
             </div>
         </div>
     </div>
@@ -53,6 +56,7 @@
                                 <th>Customer name</th>
                                 <th>Payment method</th>
                                 <th>Order date</th>
+                                <th>Bill Status</th>
                                 <th>Status</th>
                                 <th>Detail</th>
                             </tr>
@@ -94,6 +98,7 @@
             <td>{{{PaymentMethod}}}</td>
             <td>{{{DateCreated}}}</td>
             <td>{{{BillStatus}}}</td>
+            <td>{{{Status}}}</td>
             <td><a href="#" data-id="{{Id}}" class="btn-view"><i class="fa fa-eye"></i></a></td>
         </tr>
     </script>

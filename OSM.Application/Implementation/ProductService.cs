@@ -130,31 +130,22 @@ namespace OSM.Application.Implementation
             var query = _productRepository.FindAll(x => x.Status == Status.Active);
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.Name.Contains(keyword));
+            var categories = _productCategoryRepository.FindAll();
             if (categoryId.HasValue)
             {
-                var items = query.Where(x => x.CategoryId == categoryId.Value);
-                if (items.Count() == 0)
-                {
-                    var childrenCategoryQuery = _productCategoryRepository.FindAll(c => c.ParentId == categoryId);
-                    var result = from z in query join s in childrenCategoryQuery on z.CategoryId equals s.Id select z;
-                    if (result.Count() == 0)
-                    {
-                        var categories = _productCategoryRepository.FindAll();
-                        var subCategories = from z in categories join x in childrenCategoryQuery on z.ParentId equals x.Id select z;
-                        var subProducts = from z in query join s in subCategories on z.CategoryId equals s.Id select z;
-                        query = subProducts;
-                    }
-                    else
-                    {
-                        query = result;
-                    }
-                }
-                else
-                {
-                    query = items;
-                }
-            }
+                var level1Items = query.Where(x => x.CategoryId == categoryId.Value);
 
+                var level2Categories = _productCategoryRepository.FindAll(c => c.ParentId == categoryId);
+                var level2Items = from z in query join s in level2Categories on z.CategoryId equals s.Id select z;
+
+                
+                var level3Categories = from z in categories join x in level2Categories on z.ParentId equals x.Id select z;
+                var level3Items = from z in query join s in level3Categories on z.CategoryId equals s.Id select z;
+                var re = level1Items.Concat(level2Items);
+                query = re.Concat(level3Items);
+            }
+            var filterQuery = from i in query join c in categories on i.CategoryId equals c.Id where c.Status == Status.Active select i;
+            query = filterQuery;
             int totalRow = query.Count();
             if (sortBy == null || sortBy.Equals("lastest"))
             {
@@ -451,7 +442,7 @@ namespace OSM.Application.Implementation
         public void UpdateQuantity(int id, int quantity)
         {
             var productQuantity = _productQuantityRepository.FindById(id);
-            productQuantity.Quantity -= quantity;
+            productQuantity.Quantity = quantity;
             _productQuantityRepository.Update(productQuantity);
         }
     }

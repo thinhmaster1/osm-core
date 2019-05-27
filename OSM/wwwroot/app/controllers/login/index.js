@@ -35,7 +35,7 @@
                 Password: pass
             },
             dataType: 'json',
-            url: '/admin/login/authen',
+            url: '/Admin/Login/Authen',
             success: function (res) {
                 if (res.Success) {
                     window.location.href = "/Admin/Home/Index";

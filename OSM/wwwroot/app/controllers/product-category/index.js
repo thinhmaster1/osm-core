@@ -144,6 +144,7 @@
                     $('#ckShowHomeM').prop('checked', data.HomeFlag);
                     $('#txtOrderM').val(data.SortOrder);
                     $('#txtHomeOrderM').val(data.HomeOrder);
+                    $('#hidDC').val(data.DateCreated);
                     $('#modal-add-edit').modal('show');
                     osm.stopLoading();
                 },
@@ -218,6 +219,7 @@
                 var seoAlias = $('#txtAliasM').val();
                 var status = $('#ckStatusM').prop('checked') == true ? 1 : 0;
                 var showHome = $('#ckShowHomeM').prop('checked');
+                var dateCreated = $('#hidDC').val();
                 $.ajax({
                     type: "POST",
                     url: "/Admin/ProductCategory/SaveEntity",
@@ -234,7 +236,8 @@
                         SeoPageTitle: seoPageTitle,
                         SeoAlias: seoAlias,
                         SeoKeywords: seoKeyword,
-                        SeoDescription: seoMetaDescription
+                        SeoDescription: seoMetaDescription,
+                        DateCreated: dateCreated
                     },
                     dataType: "json",
                     beforeSend: function () {
@@ -270,6 +273,8 @@
         $('#txtAliasM').val('');
         $('#ckStatusM').prop('checked', true);
         $('#ckShowHomeM').prop('checked', false);
+        var newDate = new Date();
+        $('#hidDC').val(newDate.toJSON());
     }
     function initTreeDropDownCategory(selectedId) {
         $.ajax({
@@ -279,11 +284,12 @@
             async: false,
             success: function (response) {
                 var data = [];
+                
                 $.each(response, function (i, item) {
                     data.push({
                         id: item.Id,
                         text: item.Name,
-                        parentId: item.ParentId,
+                        parentId: item.ParentId ,
                         sortOrder: item.SortOrder
                     });
                 });

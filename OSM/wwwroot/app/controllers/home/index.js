@@ -2,6 +2,20 @@
     this.initialize = function () {
         initDateRangePicker();
         loadData();
+        autoCompleteBill();
+        autoDeActiceProduct();
+    }
+    function autoCompleteBill() {
+        $.ajax({
+            type: "post",
+            url: "/admin/home/AutoDeActiceProduct",
+            success: function () {
+                osm.notify('Auto deactive products successfully!!','success');
+            }
+        });
+    }
+    function autoDeActiceProduct() {
+
     }
     function loadData(from, to) {
         $.ajax({
@@ -28,11 +42,27 @@
     function initChart(data) {
         var arrRevenue = [];
         var arrProfit = [];
+        var arrSession = [];
+        var totalSession = 0;
+        var totalRevenue = 0;
+        var totalProfit = 0;
+        var smallArrRevenue = [];
+        var smallArrrProfit = [];
+        var smallArrSession = [];
         $.each(data, function (i, item) {
             arrRevenue.push([new Date(item.Date).getTime(), item.Revenue]);
+            smallArrRevenue.push(item.Revenue);
+            totalRevenue += item.Revenue;
         });
         $.each(data, function (i, item) {
             arrProfit.push([new Date(item.Date).getTime(), item.Profit]);
+            smallArrrProfit.push(item.Profit);
+            totalProfit += item.Profit;
+        });
+        $.each(data, function (i, item) {
+            arrSession.push([new Date(item.Date).getTime(), item.Fund]);
+            smallArrSession.push(item.Fund);
+            totalSession += item.Fund;
         });
         var chart_plot_02_settings = {
             grid: {
@@ -100,33 +130,80 @@
         if ($("#chart_plot_02").length) {
             console.log('Plot2');
             $.plot($("#chart_plot_02"),
-                [{
-                    label: "Revenue",
-                    data: arrRevenue,
-                    lines: {
-                        fillColor: "rgba(150, 202, 89, 0.12)"
+                [
+                    {
+                        label: "Session",
+                        data: arrSession,
+                        lines: {
+                            fillColor: "rgba(150, 140, 89, 0.12)"
+                        },
+                        points: {
+                            fillColor: "#fff"
+                        }
                     },
-                    points: {
-                        fillColor: "#fff"
-                    }
-                },
-                {
-                    label: "Profit",
-                    data: arrProfit,
-                    lines: {
-                        fillColor: "rgba(140, 232, 289, 0.12)"
+                    {
+                        label: "Revenue",
+                        data: arrRevenue,
+                        lines: {
+                            fillColor: "rgba(150, 202, 89, 0.12)"
+                        },
+                        points: {
+                            fillColor: "#fff"
+                        }
                     },
-                    points: {
-                        fillColor: "#fff"
-                    }
-                }], chart_plot_02_settings);
+                    {
+                        label: "Profit",
+                        data: arrProfit,
+                        lines: {
+                            fillColor: "rgba(140, 232, 289, 0.12)"
+                        },
+                        points: {
+                            fillColor: "#fff"
+                        }
+                    }], chart_plot_02_settings);
         }
+        document.getElementById("session").innerHTML = osm.formatNumber(totalSession, 0) +" VND";
+        document.getElementById("revenue").innerHTML = osm.formatNumber(totalRevenue, 0) + " VND";
+        document.getElementById("profit").innerHTML = osm.formatNumber(totalProfit, 0) + " VND";
+        $(".sparkline11").sparkline(smallArrSession, {
+            type: 'bar',
+            height: '40',
+            barWidth: 8,
+            colorMap: {
+                '7': '#a1a1a1'
+            },
+            barSpacing: 2,
+            barColor: '#26B99A'
+        });
+
+
+        $(".sparkline22").sparkline(smallArrRevenue, {
+            type: 'line',
+            height: '40',
+            width: '200',
+            lineColor: '#26B99A',
+            fillColor: '#ffffff',
+            lineWidth: 3,
+            spotColor: '#34495E',
+            minSpotColor: '#34495E'
+        });
+        $(".sparkline33").sparkline(smallArrrProfit, {
+            type: 'bar',
+            height: '40',
+            barWidth: 8,
+            colorMap: {
+                '7': '#a1a1a1'
+            },
+            barSpacing: 2,
+            barColor: '#26B99A'
+        });
     }
     function initDateRangePicker() {
         if (typeof ($.fn.daterangepicker) === 'undefined') { return; }
         console.log('init_daterangepicker');
         var cb = function (start, end, label) {
             console.log(start.toISOString(), end.toISOString(), label);
+            $('#fromDateToDate').text('From ' + start.format('MMMM D, YYYY') + '  -  ' + end.format('MMMM D, YYYY'));
             $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         };
         var optionSet1 = {

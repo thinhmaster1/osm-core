@@ -36,7 +36,7 @@ namespace OSM.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllPaging(string keyword, int page, int pageSize)
         {
-            var model = _blogService.GetAllPaging(keyword, page, pageSize);
+            var model = _blogService.GetAllPaging(keyword, pageSize, page);
             return new OkObjectResult(model);
         }
 
@@ -50,6 +50,8 @@ namespace OSM.Areas.Admin.Controllers
             }
             if (blogVm.Id == 0)
             {
+                if (blogVm.DateCreated == null)
+                    blogVm.DateCreated = DateTime.Now;
                 _blogService.Add(blogVm);
             }
             else

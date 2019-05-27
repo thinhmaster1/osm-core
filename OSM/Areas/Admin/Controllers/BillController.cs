@@ -38,17 +38,17 @@ namespace OSM.Areas.Admin.Controllers
 
             return new OkObjectResult(model);
         }
-        [HttpGet]
-        public IActionResult UpdateStatus(int billId, BillStatus status)
+        [HttpPost]
+        public IActionResult UpdateStatus(int billId, BillStatus billStatus, Status status)
         {
-            _billService.UpdateStatus(billId, status);
-
-            return new OkResult();
+            _billService.UpdateStatus(billId, billStatus, status);
+            _billService.Save();
+            return new OkObjectResult(billId);
         }
         [HttpGet]
-        public IActionResult GetAllPaging(string startDate, string endDate, string keyword, int page, int pageSize)
+        public IActionResult GetAllPaging(string startDate, string endDate, string keyword, int page, int pageSize, int? status)
         {
-            var model = _billService.GetAllPaging(startDate, endDate, keyword, page, pageSize);
+             var model = _billService.GetAllPaging(startDate, endDate, keyword, page, pageSize, status);
             return new OkObjectResult(model);
         }
         [HttpPost]

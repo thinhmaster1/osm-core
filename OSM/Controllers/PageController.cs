@@ -20,6 +20,10 @@ namespace OSM.Controllers
         public IActionResult Index(string alias)
         {
             var page = _pageService.GetByAlias(alias);
+            if( page == null)
+            {
+                return Redirect("/");
+            }
             return View(page);
         }
     }

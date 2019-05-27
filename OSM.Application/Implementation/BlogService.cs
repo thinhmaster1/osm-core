@@ -74,9 +74,9 @@ namespace OSM.Application.Implementation
                 .ProjectTo<BlogViewModel>().ToList();
         }
 
-        public PagedResult<BlogViewModel> GetAllPaging(string keyword, int page, int pageSize)
+        public PagedResult<BlogViewModel> GetAllPaging(string keyword, int pageSize, int page)
         {
-            var query = _blogRepository.FindAll();
+            var query = _blogRepository.FindAll(x => x.Status == Status.Active);
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.Name.Contains(keyword));
 
@@ -138,7 +138,7 @@ namespace OSM.Application.Implementation
 
         public List<BlogViewModel> GetLastest(int top)
         {
-            return _blogRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
+            return _blogRepository.FindAll(x => x.Status == Status.Active && x.HomeFlag == true).OrderByDescending(x => x.DateCreated)
                 .Take(top).ProjectTo<BlogViewModel>().ToList();
         }
 

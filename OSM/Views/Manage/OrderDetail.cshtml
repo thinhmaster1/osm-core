@@ -1,76 +1,105 @@
 ﻿@model OSM.Application.ViewModels.Bill.BillViewModel
-
-<div class="my-account">
-    <div class="page-title">
-        <h2>Order Information</h2>
-    </div>
-    <div class="orders-list table-responsive">
-        <!--order info tables-->
-        <table class="table table-bordered cart_summary table-striped">
-            <tr>
-                <td class="order-number">Order Number</td>
-                <td data-title="Order Number">#@Model.Id</td>
-            </tr>
-            <tr>
-                <td class="order-number">Order Date</td>
-                <td data-title="Order Date">@Model.DateCreated</td>
-            </tr>
-            <tr>
-                <td class="order-number">Order Status</td>
-                <td data-title="Order Status">@Model.BillStatus</td>
-            </tr>
-            <tr>
-                <td class="order-number">Last Updated</td>
-                <td data-title="Last Update">@Model.DateModified</td>
-            </tr>
-            <tr>
-                <td class="order-number">Payment</td>
-                <td data-title="Payment">@Model.PaymentMethod</td>
-            </tr>
-            <tr>
-                <td class="order-number">Comment</td>
-                <td data-title="Comment">@Model.CustomerMessage</td>
-            </tr>
-            <tr>
-                <td class="order-address">Address</td>
-                <td data-title="Comment">@Model.CustomerAddress</td>
-            </tr>
-            <tr>
-                <td class="order-number">Total</td>
-                <td data-title="Total"><p>@Model.TotalPrice VND</p></td>
-            </tr>
-        </table>
-    </div>
-        <b>Items List</b>
-    <div class="wishlist-item table-responsive">
-        <table class="col-md-12">
-            <thead>
+@section Scripts{
+    <script src="~/client-app/controllers/order/index.js" asp-append-version="true"></script>
+    <script>
+        var orderObj = new OrderController();
+        orderObj.initialize();
+    </script>
+}
+    <div class="my-account">
+        <div class="page-title">
+            <h2>Order Information</h2>
+        </div>
+        <div class="orders-list table-responsive">
+            <!--order info tables-->
+            <table class="table table-bordered cart_summary table-striped">
                 <tr>
-                    <th class="th-product">Image</th>
-                    <th class="th-details">Product Name</th>
-                    <th class="th-size">Size</th>
-                    <th class="th-color">Color</th>
-                    <th class="th-quantity">Quantity</th>
-                    <th class="th-price">Price</th>
+                    <td class="order-number">Order Number</td>
+                    <td data-title="Order Number">#@Model.Id</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var detail in Model.BillDetails)
-                {
-                    var url = "/" + detail.Product.SeoAlias + "-p." + detail.ProductId + ".html";
+                <tr>
+                    <td class="order-number">Order Date</td>
+                    <td data-title="Order Date">@Model.DateCreated</td>
+                </tr>
+                <tr>
+                    <td class="order-number">Order Status</td>
+                    <td data-title="Order Status">@Model.BillStatus</td>
+                </tr>
+                <tr>
+                    <td class="order-number">Last Updated</td>
+                    <td data-title="Last Update">@Model.DateModified</td>
+                </tr>
+                <tr>
+                    <td class="order-number">Payment</td>
+                    <td data-title="Payment">@Model.PaymentMethod</td>
+                </tr>
+                <tr>
+                    <td class="order-number">Comment</td>
+                    <td data-title="Comment">@Model.CustomerMessage</td>
+                </tr>
+                <tr>
+                    <td class="order-address">Address</td>
+                    <td data-title="Comment">@Model.CustomerAddress</td>
+                </tr>
+                <tr>
+                    <td class="order-number">Total</td>
+                    <td data-title="Total"><p>@Model.TotalPrice VND</p></td>
+                </tr>
+            </table>
+
+        </div>
+        <b>Items List</b>
+        <div class="wishlist-item table-responsive">
+            <table class="col-md-12">
+                <thead>
                     <tr>
-                        <td class="th-product"><a href="@url"><img src="@detail.Product.Name" alt="@detail.Product.SeoAlias"/></a></td>
-                        <td class="th-name"><a href="@url">@detail.Product.Name</a></td>
-                        <td class="th-size">@detail.Size.Name</td>
-                        <td class="th-color">@detail.Color.Name</td>
-                        <td class="th-quantity">@detail.Quantity</td>
-                        <th class="th-price">@detail.Price.ToString("N0")</th>
+                        <th class="th-product">Image</th>
+                        <th class="th-details">Product Name</th>
+                        <th class="th-size">Size</th>
+                        <th class="th-color">Color</th>
+                        <th class="th-quantity">Quantity</th>
+                        <th class="th-price">Price</th>
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @foreach (var detail in Model.BillDetails)
+                    {
+                        var url = "/" + detail.Product.SeoAlias + "-p." + detail.ProductId + ".html";
+                        <tr>
+                            <td class="th-product"><a href="@url"><img src="@detail.Product.Image" alt="@detail.Product.SeoAlias" /></a></td>
+                            <td class="th-name"><a href="@url">@detail.Product.Name</a></td>
+                            <td class="th-size">@detail.Size.Name</td>
+                            <td class="th-color">@detail.Color.Name</td>
+                            <td class="th-quantity">@detail.Quantity</td>
+                            <th class="th-price">@((detail.Price * detail.Quantity).ToString("N0")) VND</th>
+
+                        </tr>
+                    }
 
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        @if (Model.Status == OSM.Data.Enums.Status.Active)
+        {
+            @if (@Model.BillStatus == OSM.Data.Enums.BillStatus.New)
+            {
+                <div class="row right">
+                    <button id="btnCancel" data-id="@Model.Id" data-status="@Model.BillStatus">Cancel Order</button>
+
+                </div>
+            }
+            else if (@Model.BillStatus == OSM.Data.Enums.BillStatus.Completed)
+            {
+                <div class="row right">
+                    <button id="btnReturn" data-id="@Model.Id" data-status="@Model.BillStatus">Return Order</button> |
+                    <button id="btnComplete" data-id="@Model.Id" data-status="@Model.BillStatus">Complete Order</button>
+                </div>
+            }
+        }
+
+
+
+
     </div>
-
-</div>

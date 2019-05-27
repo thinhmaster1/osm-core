@@ -16,7 +16,7 @@ namespace OSM.Controllers.Components
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(_productCategoryService.GetAll());
+            return View(_productCategoryService.GetAllActive());
         }
     }
 }

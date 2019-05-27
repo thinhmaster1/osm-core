@@ -4,10 +4,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OSM.Application.Interfaces;
+using OSM.Application.ViewModels.Bill;
 using OSM.Data.Entities;
+using OSM.Data.Enums;
+using OSM.Models;
 using OSM.Models.ManageViewModels;
 using OSM.Services;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -25,7 +29,7 @@ namespace OSM.Controllers
         private readonly ILogger _logger;
         private readonly UrlEncoder _urlEncoder;
         private readonly IBillService _billService;
-
+        private readonly IProductService _productService;
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
         private const string RecoveryCodesKey = nameof(RecoveryCodesKey);
 
@@ -34,7 +38,8 @@ namespace OSM.Controllers
           SignInManager<AppUser> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder, IBillService billService)
+          UrlEncoder urlEncoder, IBillService billService,
+          IProductService productService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,29 +47,62 @@ namespace OSM.Controllers
             _logger = logger;
             _urlEncoder = urlEncoder;
             _billService = billService;
+            _productService = productService;
         }
 
         [TempData]
         public string StatusMessage { get; set; }
-        
+
         public IActionResult Order()
         {
             var userId = _userManager.GetUserId(User);
             var bills = _billService.GetAllByCustomerId(new Guid(userId));
-            return View(bills);
+            var order = new List<OrderViewModel>();
+            foreach (BillStatus status in (BillStatus[])Enum.GetValues(typeof(BillStatus)))
+            {
+                var billsByStatus = new List<BillViewModel>();
+                foreach (var bill in bills)
+                {
+                    if (bill.BillStatus == status)
+                    {
+                        billsByStatus.Add(bill);
+                    }
+                }
+                order.Add(new OrderViewModel { OrderStatus = status, OrderBills = billsByStatus });
+            }
+            return View(order);
         }
-        [Route("order.html")]
+
         public IActionResult OrderDetail(int id)
         {
-
             var bill = _billService.GetBill(id);
             bill.BillDetails = _billService.GetBillDetails(id);
-            foreach(var detail in bill.BillDetails)
+            foreach (var detail in bill.BillDetails)
             {
                 bill.TotalPrice += (int)detail.Price * detail.Quantity;
             }
             return View(bill);
         }
+
+        [HttpPost]
+        public IActionResult UpdateOrderStatus(int orderId, BillStatus billStatus, Status status)
+        {
+            var billsList = _billService.GetBillDetails(orderId);
+            if(billStatus == BillStatus.Cancelled)
+            {
+                foreach (var item in billsList)
+                {
+                    var quantity = _productService.GetQuantity(item.ProductId, item.ColorId, item.SizeId);
+                    _productService.UpdateQuantity(quantity.Id, item.Quantity + quantity.Quantity);
+                }
+                _productService.Save();
+            }
+            _billService.UpdateStatus(orderId, billStatus, status);
+            
+            _billService.Save();
+            return new OkObjectResult("Your action is successful!");
+        }
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -80,7 +118,8 @@ namespace OSM.Controllers
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = StatusMessage
+                StatusMessage = StatusMessage,
+                Address = user.Address
             };
 
             return View(model);
@@ -120,7 +159,16 @@ namespace OSM.Controllers
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
                 }
             }
-
+            var address = user.Address;
+            if (model.Address != address)
+            {
+                user.Address = model.Address;
+                var setAddressResult = await _userManager.UpdateAsync(user);
+                if (!setAddressResult.Succeeded)
+                {
+                    throw new ApplicationException($"Unexpected error occurred setting address for user with ID '{user.Id}'.");
+                }
+            }
             StatusMessage = "Your profile has been updated";
             return RedirectToAction(nameof(Index));
         }

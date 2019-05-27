@@ -81,7 +81,25 @@
                                                     <div class="item-content">
                                                         <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                         <div class="item-price">
-                                                            <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                            @if (item.PromotionPrice.HasValue)
+                                                            {
+                                                                <p class="special-price">
+                                                                    <span class="price-label">Special Price</span>
+                                                                    <span class="price"> @item.PromotionPrice.Value.ToString("N0") VND</span>
+                                                                </p>
+                                                                <p class="old-price">
+                                                                    <span class="price-label">Regular Price:</span>
+                                                                    <span class="price"> @item.Price.ToString("N0") </span>
+                                                                </p>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <p class="special-price">
+                                                                    <span class="price-label">Price</span>
+                                                                    <span class="price"> @item.Price.ToString("N0") VND</span>
+                                                                </p>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>

@@ -303,7 +303,6 @@ namespace OSM.Data.EF.Migrations
                     b.Property<Guid?>("CustomerId");
 
                     b.Property<string>("CustomerMessage")
-                        .IsRequired()
                         .HasMaxLength(256);
 
                     b.Property<string>("CustomerMobile")

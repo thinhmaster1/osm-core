@@ -61,7 +61,7 @@
                                 if ((bool)ViewData["Success"] == true)
                                 {
                                     <div class="alert alert-success">
-                                        Thank you for your feedback. We are going to reply your order soon.
+                                        Thank you for your feedback. We are going to reply your request soon.
                                     </div>
 
                                 }
@@ -89,14 +89,14 @@
                                         </div>
                                         <div class="form-selector">
                                             <label>Email</label>
-                                            <input type="text" class="form-control input-sm" asp-for="Feedback.Email" />
+                                            <input type="text" class="form-control input-sm" asp-for="Feedback.Email" required/>
                                         </div>
                                         <div class="form-selector">
                                             <label>Message</label>
-                                            <textarea class="form-control input-sm" rows="10" asp-for="Feedback.Message"></textarea>
+                                            <textarea class="form-control input-sm" rows="10" asp-for="Feedback.Message" required></textarea>
                                         </div>
                                         <div class="form-selector">
-                                            <button type="submit" class="button"><i class="icon-paper-plane icons"></i>&nbsp; <span>Send Message</span></button>
+                                            <button type="submit" class="button"><i class="icon-paper-plane icons"></i>&nbsp; <span>Send Message</span>'</button>
                                             &nbsp; <a href="#" class="button">Clear</a>
                                         </div>
                                     </div>

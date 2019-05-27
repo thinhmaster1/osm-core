@@ -49,14 +49,7 @@
                 <div class="jtv-banner3">
                     <div class="jtv-banner3-inner">
                         <a href="#"><img src="/client-side/images/sub1.jpg" alt="HTML template"></a>
-                        <div class="hover_content">
-                            <div class="hover_data">
-                                <div class="title"> Big Sale </div>
-                                <div class="desc-text">Up to 55% off</div>
-                                <span>Camera, Laptop & Mobile</span>
-                                <p><a href="#" class="shop-now">Get it nxow!</a></p>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -102,7 +95,7 @@
                                                         <div class="item-price">
                                                             <div class="price-box">
 
-                                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") VND</span> </p>
                                                                 <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") </span> </p>
                                                             </div>
                                                         </div>
@@ -126,7 +119,7 @@
 <div class="container">
     <div class="home-tab">
         <div class="tab-title text-left">
-            <h2>Best Selling</h2>
+            <h2>Recommend</h2>
             <ul class="nav home-nav-tabs home-product-tabs">
                 @for (var i = 0; i < Model.HomeCategories.Count; i++)
                 {
@@ -197,13 +190,13 @@
                                                                 {
                                                                     <div class="price-box">
 
-                                                                        <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                                        <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") VND</span> </p>
                                                                         <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") </span> </p>
                                                                     </div>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> VND</div>
                                                                 }
                                                             </div>
                                                         </div>
@@ -238,8 +231,8 @@
                             <div class="slider-items">
                                 @for (var i = 0; i < Model.HotProducts.Count/2; i++)
                                 {
-                                    var upperProduct = Model.HotProducts[i];
-                                    var belowProduct = Model.HotProducts[i + 1];
+                                    var upperProduct = Model.HotProducts[i*2];
+                                    var belowProduct = Model.HotProducts[i*2 + 1];
                                     var hotProducts = new List<ProductViewModel> { upperProduct, belowProduct };
                                 <ul class="products-grid">
                                     @foreach (var item in hotProducts)
@@ -256,13 +249,13 @@
                                                             {
                                                                 <div class="price-box">
 
-                                                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") VND</span> </p>
                                                                     <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") </span> </p>
                                                                 </div>
                                                             }
                                                             else
                                                             {
-                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0") VND</span> </span> </div>
                                                             }
                                                         </div>
 
@@ -287,10 +280,7 @@
                         <a href="#"><img src="~/client-side/images/sub1a.jpg" alt="HTML template"></a>
                         <div class="hover_content">
                             <div class="hover_data bottom">
-                                <div class="desc-text">Top Brands at discount prices </div>
-                                <div class="title">Electronisc Sale</div>
-                                <span>Smartphone & Cell phone</span>
-                                <p><a href="#" class="shop-now">Get it now!</a></p>
+                          
                             </div>
                         </div>
                     </div>
@@ -308,8 +298,8 @@
                             <div class="slider-items">
                                 @for (var i = 0; i < Model.LastestProducts.Count/2; i++)
                                 {
-                                    var upperProduct = Model.LastestProducts[i];
-                                    var belowProduct = Model.LastestProducts[i + 1];
+                                    var upperProduct = Model.LastestProducts[i*2];
+                                    var belowProduct = Model.LastestProducts[i*2 + 1];
                                     var lastestProducts = new List<ProductViewModel> { upperProduct, belowProduct };
                                 <ul class="products-grid">
                                     @foreach (var item in lastestProducts)
@@ -326,13 +316,13 @@
                                                             {
                                                                 <div class="price-box">
 
-                                                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") </span> </p>
+                                                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@item.PromotionPrice.Value.ToString("N0") VND</span> </p>
                                                                     <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") </span> </p>
                                                                 </div>
                                                             }
                                                             else
                                                             {
-                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0") VND</span> </span> </div>
                                                             }
                                                         </div>
 
@@ -371,14 +361,13 @@
                                 <a href="/@item.SeoAlias-b.@(item.Id).html"> <img class="primary-img" src="@item.Image" alt="@item.Name"></a>
                                 <div class="blog-btm-desc">
                                     <div class="blog-top-desc">
-                                        <div class="blog-date"> @item.DateModified.ToString("MM/dd/yyyy") </div>
+                                        <div class="blog-date"> @item.DateModified.ToString("MMMM d yyyy") </div>
                                         <h4><a href="/@item.SeoAlias-b.@(item.Id).html">@item.Name</a></h4>
                                         <div class="jtv-entry-meta">
                                             <i class="fa fa-user-o"></i> <strong>@item.Author</strong>
-                                            <i class="fa fa-eye"></i> <strong>@(item.ViewCount == null ? 0 : item.ViewCount) View(s)</strong>
                                         </div>
                                     </div>
-                                    <p>@item.Description</p>
+                                    <p>@(item.Description.Length > 100 ? item.Description.Substring(0, 100) : item.Description) ...</p>
                                     <a class="read-more" href="/@item.SeoAlias-b.@(item.Id).html"> Read more</a>
                                 </div>
                             </div>
@@ -391,4 +380,4 @@
 </section>
 
 <!-- our clients Slider -->
-@await Component.InvokeAsync("Brand")
+@*@await Component.InvokeAsync("Brand")*@

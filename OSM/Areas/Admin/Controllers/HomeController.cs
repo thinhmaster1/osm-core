@@ -23,9 +23,27 @@ namespace OSM.Areas.Admin.Controllers
             var email = User.GetSpecificClaim("Email");
             return View();
         }
+        [HttpGet]
         public async Task<IActionResult> GetRevenue(string fromDate, string toDate)
         {
             return new OkObjectResult(await _reportService.GetReportAsync(fromDate, toDate));
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetBill()
+        {
+            return new OkObjectResult(await _reportService.GetBillAsync());
+        }
+        [HttpPost]
+        public async Task<IActionResult> AutoCompleteBill()
+        {
+             await _reportService.AutoCompleteBillAsync();
+            return new OkObjectResult("");
+        }
+        [HttpPost]
+        public async Task<IActionResult> AutoDeActiceProduct()
+        {
+            await _reportService.DeActiveProductAsync();
+            return new OkObjectResult("");
         }
     }
 }

@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using OSM.Models;
+using OSM.Application.Interfaces;
+using OSM.Data.Entities;
 using OSM.Models.ManageViewModels;
 using OSM.Services;
+using System;
+using System.Linq;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace OSM.Controllers
 {
@@ -20,32 +19,52 @@ namespace OSM.Controllers
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly UrlEncoder _urlEncoder;
+        private readonly IBillService _billService;
 
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
         private const string RecoveryCodesKey = nameof(RecoveryCodesKey);
 
         public ManageController(
-          UserManager<ApplicationUser> userManager,
-          SignInManager<ApplicationUser> signInManager,
+          UserManager<AppUser> userManager,
+          SignInManager<AppUser> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder, IBillService billService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            _billService = billService;
         }
 
         [TempData]
         public string StatusMessage { get; set; }
+        
+        public IActionResult Order()
+        {
+            var userId = _userManager.GetUserId(User);
+            var bills = _billService.GetAllByCustomerId(new Guid(userId));
+            return View(bills);
+        }
+        [Route("order.html")]
+        public IActionResult OrderDetail(int id)
+        {
 
+            var bill = _billService.GetBill(id);
+            bill.BillDetails = _billService.GetBillDetails(id);
+            foreach(var detail in bill.BillDetails)
+            {
+                bill.TotalPrice += (int)detail.Price * detail.Quantity;
+            }
+            return View(bill);
+        }
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -267,7 +286,7 @@ namespace OSM.Controllers
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            var info = await _signInManager.GetExternalLoginInfoAsync(user.Id);
+            var info = await _signInManager.GetExternalLoginInfoAsync(user.Id.ToString());
             if (info == null)
             {
                 throw new ApplicationException($"Unexpected error occurred loading external login info for user with ID '{user.Id}'.");
@@ -527,7 +546,7 @@ namespace OSM.Controllers
                 unformattedKey);
         }
 
-        private async Task LoadSharedKeyAndQrCodeUriAsync(ApplicationUser user, EnableAuthenticatorViewModel model)
+        private async Task LoadSharedKeyAndQrCodeUriAsync(AppUser user, EnableAuthenticatorViewModel model)
         {
             var unformattedKey = await _userManager.GetAuthenticatorKeyAsync(user);
             if (string.IsNullOrEmpty(unformattedKey))
@@ -540,6 +559,6 @@ namespace OSM.Controllers
             model.AuthenticatorUri = GenerateQrCodeUri(user.Email, unformattedKey);
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

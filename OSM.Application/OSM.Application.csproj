@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OSM.Data.EF\OSM.Data.EF.csproj" />
+    <ProjectReference Include="..\OSM.Data\OSM.Data.csproj" />
+    <ProjectReference Include="..\OSM.Intilities\OSM.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

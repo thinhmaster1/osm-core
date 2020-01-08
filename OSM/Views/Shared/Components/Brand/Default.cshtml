@@ -1,0 +1,21 @@
+﻿@model List<OSM.Application.ViewModels.Common.SlideViewModel>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="our-clients">
+                <div class="slider-items-products">
+                    <div id="our-clients-slider" class="product-flexslider hidden-buttons">
+                        <div class="slider-items slider-width-col6">
+                            @foreach (var item in Model)
+                            {
+                                <div class="item"><a href=@item.Url><img src=@item.Image alt="Image"></a> </div>
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

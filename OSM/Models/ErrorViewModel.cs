@@ -1,5 +1,3 @@
-using System;
-
 namespace OSM.Models
 {
     public class ErrorViewModel
